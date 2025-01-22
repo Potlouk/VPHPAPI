@@ -1,0 +1,114 @@
+2024-12-10 12:03:25 - SELECT * FROM Studenti_Predmety aJOIN Predmety ON Studenti_Predmety.Predmety_id = Studenti_Predmety.id WHERE Predmety_id = 9
+2024-12-10 12:04:54 - SELECT * FROM Studenti_Predmety a JOIN Predmety ON Studenti_Predmety.Predmety_id = Studenti_Predmety.id WHERE Studenti_id = 9
+2024-12-10 12:05:16 - SELECT * FROM Studenti_Predmety JOIN Predmety ON Studenti_Predmety.Predmety_id = Studenti_Predmety.id WHERE Studenti_id = 9
+2024-12-10 12:06:44 - SELECT * FROM Studenti_Predmety JOIN Predmety ON Studenti_Predmety.Predmety_id = Predmety.id WHERE Studenti_id = 9
+2024-12-10 12:06:44 - SELECT * FROM Studenti_Znamky JOIN Predmety ON Studenti_Znamky.Predmety_id = Predmety.id JOIN Znamky ON Studenti_Znamky.Znamky_id = Znamky.id WHERE Studenti_id = 9
+2024-12-10 12:07:50 - SELECT * FROM Studenti_Predmety JOIN Predmety ON Studenti_Predmety.Predmety_id = Predmety.id WHERE Studenti_id = 9
+2024-12-10 12:07:50 - SELECT * FROM Studenti_Znamky JOIN Predmety ON Studenti_Znamky.Predmety_id = Predmety.id JOIN Znamky ON Studenti_Znamky.Znamky_id = Znamky.id WHERE Studenti_id = 9
+2024-12-10 12:07:50 - SELECT * FROM Tridy
+        WHERE id = 1
+2024-12-14 19:07:13 - 1
+2024-12-14 19:08:26 - 1
+2024-12-14 19:10:15 - 1
+2024-12-14 19:11:50 - 1
+2024-12-14 19:13:32 - 1
+2024-12-14 19:32:40 - 1
+2024-12-14 19:39:59 - 1
+2024-12-14 19:41:06 - 1
+2024-12-14 19:41:42 - 1
+2024-12-14 19:42:26 - 1
+2024-12-14 19:43:19 - 1
+2024-12-14 19:45:29 - 1
+2024-12-14 19:46:22 - 1
+2024-12-16 08:09:31 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 12:58:36 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 12:58:44 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 12:58:46 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 12:59:58 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:00:00 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:00:06 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:00:26 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:00:39 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:01:33 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:01:36 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:01:59 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:02:02 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:02:08 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:02:11 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:05:31 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:05:32 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:05:32 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:05:33 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:09:50 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:23:14 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:23:20 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:25:14 - Invalid page number. Page number must be 1 or greater.
+2024-12-16 13:25:26 - Invalid page number. Page number must be 1 or greater.
+2024-12-18 07:57:30 - Not supported method.
+2025-01-16 16:42:52 - User's password doesn't match.
+2025-01-16 17:00:42 - Unknown user passed.
+2025-01-16 17:02:32 - Unknown user passed.
+2025-01-16 17:02:43 - User's password doesn't match.
+2025-01-16 17:50:51 - User's password doesn't match.
+2025-01-17 06:45:45 - Not supported method.
+2025-01-17 07:31:14 - Unknown user passed.
+2025-01-17 07:31:35 - User's token passed.
+2025-01-17 07:31:38 - User's token passed.
+2025-01-17 11:20:13 - Unknown user passed.
+2025-01-17 11:20:14 - Unknown user passed.
+2025-01-17 18:09:22 - Unauthorized action.
+2025-01-17 21:15:55 - Unauthorized action.
+2025-01-17 21:15:57 - Unauthorized action.
+2025-01-17 21:15:58 - Unauthorized action.
+2025-01-17 21:16:07 - Unauthorized action.
+2025-01-17 21:16:08 - Unauthorized action.
+2025-01-17 21:17:13 - Unauthorized action.
+2025-01-17 21:19:23 - Model: 0 not found.
+2025-01-17 21:19:30 - Model: 0 not found.
+2025-01-18 12:30:31 - Model: 0 not found.
+2025-01-18 12:31:27 - Unauthorized action.
+2025-01-18 12:31:29 - Unauthorized action.
+2025-01-18 12:31:41 - Unauthorized action.
+2025-01-21 19:09:54 - Internal server error.
+2025-01-21 19:09:57 - Internal server error.
+2025-01-21 19:09:59 - Internal server error.
+2025-01-21 19:10:02 - Internal server error.
+2025-01-21 19:10:05 - Internal server error.
+2025-01-21 19:10:07 - Internal server error.
+2025-01-21 19:12:46 - Internal server error.
+2025-01-21 19:12:49 - Internal server error.
+2025-01-21 19:12:51 - Internal server error.
+2025-01-21 19:12:54 - Internal server error.
+2025-01-21 19:12:57 - Internal server error.
+2025-01-21 19:12:59 - Internal server error.
+2025-01-21 19:16:42 - Internal server errors.
+2025-01-21 19:16:45 - Internal server errors.
+2025-01-21 19:16:47 - Internal server errors.
+2025-01-21 19:16:50 - Internal server errors.
+2025-01-21 19:16:53 - Internal server errors.
+2025-01-21 19:16:56 - Internal server errors.
+2025-01-21 20:28:01 - Internal server error.
+2025-01-21 20:28:04 - Internal server error.
+2025-01-21 20:28:06 - Internal server error.
+2025-01-21 20:28:09 - Internal server error.
+2025-01-21 20:28:12 - Internal server error.
+2025-01-21 20:44:49 - Internal server error.
+2025-01-21 20:44:51 - Internal server error.
+2025-01-21 20:44:54 - Internal server error.
+2025-01-21 20:44:57 - Internal server error.
+2025-01-21 20:45:00 - Internal server error.
+2025-01-21 20:45:10 - Internal server error.
+2025-01-21 20:45:13 - Internal server error.
+2025-01-21 20:45:16 - Internal server error.
+2025-01-21 20:47:19 - Internal server error.
+2025-01-21 20:47:22 - Internal server error.
+2025-01-21 20:47:25 - Internal server error.
+2025-01-21 21:12:33 - Internal server error.
+2025-01-21 21:12:36 - Internal server error.
+2025-01-21 21:12:39 - Internal server error.
+2025-01-22 00:08:43 - Internal server error.
+2025-01-22 00:09:02 - Internal server error.
+2025-01-22 07:21:34 - Internal server error.
+2025-01-22 07:23:50 - Internal server error.
+2025-01-22 07:24:08 - Internal server error.
+2025-01-22 07:24:13 - Internal server error.

@@ -1,0 +1,1 @@
+{"version":1,"defects":{"tests\\Kokot::testGetEndpoint":8,"tests\\KokotTest::testGetEndpoint":7},"times":{"tests\\Kokot::testGetEndpoint":0.012,"tests\\KokotTest::testGetEndpoint":0.026}}

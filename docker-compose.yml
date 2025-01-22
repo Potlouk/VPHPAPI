@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "6060:6060"
+    volumes:
+      - .:/var/www
+    environment:
+      - PHP_INI_SCAN_DIR=/usr/local/etc/php/conf.d
+    restart: always
+    networks:
+      - api
+
+  db:
+    image: mysql
+    container_name: mysql_database
+    restart: always
+    volumes:
+      - database_data:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - "3306:3306"
+    networks:
+      - api
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+    networks:
+      - api
+
+  redis-stack-server:
+    image: redis/redis-stack-server:7.2.0-RC1
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - api
+    restart: always
+
+networks:
+  api:
+    driver: bridge
+
+volumes:
+  database_data:
+  redis_data:
