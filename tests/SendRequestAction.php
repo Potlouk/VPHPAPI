@@ -8,7 +8,7 @@ $dotenv->safeLoad();
 
 class SendRequestAction {
 
-    static function send(string $method, string $endpoint ,string $body = '{}'): array {
+    static function send(string $method, string $endpoint ,array $body = []): array {
         $sPort = Config::getEnv('SERVER_PORT');
         $url = "http://localhost:{$sPort}/{$endpoint}";
         $ch = curl_init();

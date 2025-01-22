@@ -67,25 +67,21 @@ trait DBConnection {
     private function bindAndExecute(array $values, array $types) {
         $index = 1;
         $db = $this->getConnection()->prepare($this->query);
-
+       
         foreach ($types as $key => $type)
-        $db->bindParam($index++,$values[$key],$this->convertPDOType($type));
+            $db->bindParam($index++,$values[$key],$this->convertPDOType(gettype($values[$key])));
+        
     
         return $this->executeQuery($db);  
     }
 
-    private function convertPDOType(string $string): int {
-        switch($string){
-            case 'string':
-                return PDO::PARAM_STR;
-            case 'integer':
-                return PDO::PARAM_INT;
-            case 'bool':
-                return PDO::PARAM_BOOL;
-            default :
-                return PDO::PARAM_NULL;
-
-        }
+    private function convertPDOType(string $type): int {
+        return match ($type) {
+            'string' => PDO::PARAM_STR,
+            'integer' => PDO::PARAM_INT,
+            'bool' => PDO::PARAM_BOOL,
+            default => PDO::PARAM_NULL,
+        };
     }
 
     private function __clone() {}

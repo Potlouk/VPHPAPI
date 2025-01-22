@@ -1,1 +1,1 @@
-{"version":1,"defects":{"tests\\Kokot::testGetEndpoint":8,"tests\\KokotTest::testGetEndpoint":7},"times":{"tests\\Kokot::testGetEndpoint":0.012,"tests\\KokotTest::testGetEndpoint":0.026}}
+{"version":1,"defects":{"tests\\Kokot::testGetEndpoint":8,"tests\\KokotTest::testGetEndpoint":7,"tests\\AuthTest::testUserRegister":7},"times":{"tests\\Kokot::testGetEndpoint":0.012,"tests\\KokotTest::testGetEndpoint":0.018,"tests\\AuthTest::testUserRegister":0.293}}

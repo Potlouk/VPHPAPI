@@ -15,6 +15,7 @@ class AuthController extends Controller{
     }
 
     public function login(ApiRequest $request) : void {
+      
         $userToken = $this->auth->login($request->data);
         $this->response($userToken);   
     }

@@ -14,8 +14,8 @@ final class AuthService {
    
     public function register(array $data): string {
         $data["heslo"] = self::hash($data["heslo"]);
-
         $user = UzivatelFactory::build($data);
+       // var_export($user);
         $userId = $user->create();
 
         $uToken = TokenFactory::build([

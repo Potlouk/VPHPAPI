@@ -13,11 +13,14 @@ class ModelFactory{
         }
 
         foreach ($model->assignables as $name => $type){
-            if (array_key_exists($name, $array))
-            $model->{$name} = $array[$name];
-            else $model->{$name} = self::setDefaultValue($type);
-
-            settype($model->{$name},$model->assignables[$name]);
+            if (array_key_exists($name, $array)){
+                $model->{$name} = $array[$name];
+                settype($model->{$name}, gettype($model->{$name}));
+            }
+            else {
+                $model->{$name} = self::setDefaultValue($type);
+                settype($model->{$name}, $type);
+            }
         }
         return $model;
     }
@@ -27,7 +30,7 @@ class ModelFactory{
             'integer' => 0,
             'string' => '',
             'bool' => false,
-            default => null,
+            default => NULL
         };
     }
 

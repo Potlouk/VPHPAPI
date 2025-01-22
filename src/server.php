@@ -33,7 +33,7 @@ $router = new Router();
 
 
 $server->on("start", function () use ($router) {
-   $router->route('/student/{id}',              'GET',    StudentControllerFactory::class,'get');//->middleware(['auth','selfCheck']);
+  // $router->route('/student/{id}',              'GET',    StudentControllerFactory::class,'get');//->middleware(['auth','selfCheck']);
    
   // $router->addRoute('/student/{id}',              'GET',    StudentControllerFactory::class,'get');
   // $router->addRoute('/student/{current}/{limit}', 'GET',    StudentControllerFactory::class,'paginate');
@@ -45,17 +45,16 @@ $server->on("start", function () use ($router) {
    //$router->route('/znamka/{id}',                'PATCH',   ZnamkaControllerFactory::class,'patch');
    //$router->route('/znamka/{id}',                'DELETE',  ZnamkaControllerFactory::class,'delete');
 
-   //$router->route('/registrace', 'POST' , AuthControllerFactory::class, 'register');
- //  $router->route('/prihlaseni', 'POST' , AuthControllerFactory::class, 'login');
+   $router->route('/registrace', 'POST' , AuthControllerFactory::class, 'register');
+  // $router->route('/prihlaseni', 'POST' , AuthControllerFactory::class, 'login');
 
 
 
 });
 
 $server->on("request", function ($request, $response) use ($router) {
+  $request = new ApiRequest($request); 
     
-    $request = new ApiRequest($request); 
-  
     try{ $router->resolve($request, $response); }
     catch(ApiException $e){
         $response->header('Content-Type','application/json');

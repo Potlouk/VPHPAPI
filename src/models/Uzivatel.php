@@ -9,8 +9,8 @@ class Uzivatel extends Model{
     
     public $assignables = [
         'heslo' => 'string',
-        'Studenti_Id' => 'integer',
-        'Ucitele_Id' => 'integer',
+        'Studenti_Id' => 'null',
+        'Ucitele_Id' => 'null',
         'jmeno' => 'string'
     ];
 
