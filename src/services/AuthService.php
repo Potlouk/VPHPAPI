@@ -12,10 +12,10 @@ use src\traits\Auth;
 final class AuthService {
     use Auth; 
    
-    public function register(array $data): string {
+    public function register(array $data): array {
         $data["heslo"] = self::hash($data["heslo"]);
+        
         $user = UzivatelFactory::build($data);
-       // var_export($user);
         $userId = $user->create();
 
         $uToken = TokenFactory::build([
@@ -25,10 +25,10 @@ final class AuthService {
 
         $uToken->create();
 
-        return $uToken->token;
+        return [ 'token' => $uToken->token , 'user_id' => $userId ];
     }
 
-    public function login(array $data): string {
+    public function login(array $data): array {
         $user = new Uzivatel();
         $user = $user->where(["jmeno", $data['jmeno']]);
     
@@ -41,6 +41,6 @@ final class AuthService {
         if (!self::isMatchingPassword($data['heslo'], $user["heslo"]))
         ApiException::throw(ErrorTypes::USER_WRONG_PASSWORD);
 
-        return $uToken["token"];
+        return [ 'token'=> $uToken , 'user_id' => $user["id"] ];
     }
 }

@@ -6,6 +6,7 @@ use src\Config;
 trait Auth {
 
     private static function createToken(int $length = 32): string {
+        //bett
         return substr(str_shuffle(str_repeat(Config::getEnv('APP_CHAR_TOKEN_POOL'), $length)), 1, $length);
     }
     

@@ -15,14 +15,13 @@ class AuthController extends Controller{
     }
 
     public function login(ApiRequest $request) : void {
-      
-        $userToken = $this->auth->login($request->data);
-        $this->response($userToken);   
+        $userAuth = $this->auth->login($request->data);
+        $this->responseCookie($userAuth);     
     }
 
     public function register(ApiRequest $request) : void {
-        $userToken = $this->auth->register($request->data);
-        $this->response($userToken);  
+        $userAuth = $this->auth->register($request->data);
+        $this->responseCookie($userAuth);  
     }
 
 }

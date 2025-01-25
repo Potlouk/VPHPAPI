@@ -47,7 +47,7 @@ trait DBConnection {
     private function executeQuery(mixed $db = null): mixed{
       if($db === null) $db = $this->getConnection()->prepare($this->query);
         try {
-            print_r($this->query);
+           // print_r($this->query);
             $db->execute();
         } catch(Exception $e){
             //create kill switch on errors lmao

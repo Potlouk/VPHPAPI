@@ -33,13 +33,13 @@ $router = new Router();
 
 
 $server->on("start", function () use ($router) {
-  // $router->route('/student/{id}',              'GET',    StudentControllerFactory::class,'get');//->middleware(['auth','selfCheck']);
+    $router->route('/student/{id}',              'GET',    StudentControllerFactory::class,'get');//->middleware(['auth','selfCheck']);
    
   // $router->addRoute('/student/{id}',              'GET',    StudentControllerFactory::class,'get');
-  // $router->addRoute('/student/{current}/{limit}', 'GET',    StudentControllerFactory::class,'paginate');
+    $router->route('/student/{current}/{limit}', 'GET',    StudentControllerFactory::class,'paginate');
  //  $router->addRoute('/student',                   'POST',   StudentControllerFactory::class,'create');
    //$router->addRoute('/student/{id}',              'DELETE', StudentControllerFactory::class,'delete');
-   //$router->addRoute('/student/{id}',              'PATCH',  StudentControllerFactory::class,'patch');
+    $router->route('/student/{id}',              'PATCH',  StudentControllerFactory::class,'patch');
 
   // $router->route('/znamka',                     'POST',    ZnamkaControllerFactory::class,'create')->middleware([AuthMiddleware::class]);
    //$router->route('/znamka/{id}',                'PATCH',   ZnamkaControllerFactory::class,'patch');

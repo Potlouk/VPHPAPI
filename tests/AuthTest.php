@@ -4,24 +4,42 @@ use PHPUnit\Framework\TestCase;
 
 class AuthTest extends TestCase {
 
+    
     /** @test */
-    public function testUserRegister(): void{
+    public function testUserRegister(): void {
 
-        $body = [
+       $body = [
             "heslo" => "heslo",
             "jmeno" => "jmeno",
             "Ucitele_Id"=> 1,
             //"Studenti_Id" => 11,
         ];
 
-         $response = SendRequestAction::send('POST', 'registrace', $body);
+        $response = SendRequestAction::send('POST', 'registrace', $body);
 
-         //$this->assertCookie('twoFactor');
-         $this->assertEquals(200, $response['statusCode']);
-      
-        //$this->assertTrue(true);
-    
+        $this->assertEquals(200, $response['statusCode']);
+        $this->assertArrayHasKey('token',   $response['cookies']);
+        $this->assertArrayHasKey('user_id', $response['cookies']);
+
+        SendRequestAction::setCookies([
+            'token' => $response['cookies']['token'] , 'user_id' => $response['cookies']['user_id']
+        ]);
+
     }
 
+    /**
+     * @depends testUserRegister
+     */
+    public function testUserLogin(): void {
+        $body = [
+            "heslo" => "heslo",
+            "jmeno" => "jmeno",
+        ];
 
+        $response = SendRequestAction::send('POST', 'prihlaseni', $body);
+
+        $this->assertEquals(200, $response['statusCode']);
+        $this->assertArrayHasKey('token',   $response['cookies']);
+        $this->assertArrayHasKey('user_id', $response['cookies']);
+    }
 }

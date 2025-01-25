@@ -70,6 +70,9 @@ final class Router {
     }
 
     private function matchPath($searchArray, $requestPath): Path {
+        if (!is_array($searchArray))
+        ApiException::throw(ErrorTypes::UNSUPPORTED_PATH);
+
         $nArgs = substr_count($requestPath,'/');
         foreach (array_keys($searchArray[$nArgs]) as $path){
             if (substr_count($path,'/') != $nArgs) continue;

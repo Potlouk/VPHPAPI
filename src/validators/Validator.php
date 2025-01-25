@@ -3,6 +3,7 @@
 namespace src\validators;
 use src\Enums\ErrorTypes;
 use src\interfaces\ModelRequestValidatorInterface;
+use src\requests\ApiRequest;
 use src\traits\ApiException;
 
 abstract class Validator implements ModelRequestValidatorInterface{
@@ -22,7 +23,7 @@ abstract class Validator implements ModelRequestValidatorInterface{
      * @return array array with matched keys of rules and request
      *
      */
-    public function validate($request): array{
+    public function validate(ApiRequest $request): array{
         $this->getRules($request);
         $request = $request->data;
         $passable = false;
