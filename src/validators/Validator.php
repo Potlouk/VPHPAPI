@@ -14,7 +14,7 @@ abstract class Validator implements ModelRequestValidatorInterface{
     protected array $rules = [];
 
 
-    protected abstract function getRules($request): void;
+    protected abstract function getRules(ApiRequest $request): void;
 
     /**
      * Validate request based on specified rules in validator
@@ -25,21 +25,26 @@ abstract class Validator implements ModelRequestValidatorInterface{
      */
     public function validate(ApiRequest $request): array{
         $this->getRules($request);
-        $request = $request->data;
+
+        $request = array_intersect_key($request->data,$this->rules);
         $passable = false;
-        $request = array_intersect_key($request,$this->rules);
         
-        foreach ($request as $key => &$value){
+        foreach ($request as $key => $value){
+            $rValue = &$value;
             if (empty($this->rules[$key])) continue;
             foreach(explode('|', $this->rules[$key]) as $rule){
+                
+                if (str_contains($value,'required') && !array_key_exists($rule,$request))
+                         ApiException::throw(ErrorTypes::REQUEST_REQUIREMENTS_NOT_MET);
+
                 if (str_contains($rule, 'min') || str_contains($rule, 'max'))
                     if (!$this->validateRange($rule, $value))
                         ApiException::throw(ErrorTypes::INVALID_RANGE_NUMBER);
                     
-                    if ($this->checkType($value,$rule)){
-                        settype($value,$rule);
-                        $passable = true;
-                    }
+                if ($this->checkType($value,$rule)){
+                    settype($rValue,$rule);
+                    $passable = true;
+                }
             }
 
             if (!$passable)
@@ -51,20 +56,16 @@ abstract class Validator implements ModelRequestValidatorInterface{
         
         }
 
-        foreach($this->rules as $rule => $value)
-            if (str_contains($value,'required') && !array_key_exists($rule,$request))
-            ApiException::throw(ErrorTypes::REQUEST_REQUIREMENTS_NOT_MET);
-
         return $request;
     }
 
 
     private function validateRange(string $valueA, string $valueB): bool{
-        $valueB = (int) $valueB;
-        $valueA = (int) explode(':',$valueA)[1];
+        $x = (int) $valueB;
+        $y = (int) explode(':',$valueA)[1];
 
-        if (str_contains($valueA,'min')) return $valueA >= $valueB;
-        else return $valueA <= $valueB;
+        if (str_contains($valueA,'min')) return $x >= $y;
+        else return $x <= $y;
     }
 
 

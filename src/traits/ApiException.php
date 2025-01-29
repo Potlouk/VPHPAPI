@@ -32,7 +32,7 @@ final Class ApiException extends Exception {
                 ErrorTypes::AUTH_COOKIE_NOT_PASSED          => "Auth cookie not passed.",
                 ErrorTypes::AUTH_COOKIE_NOT_SATISFIED       => "Auth cookie not satisfied.",
                 ErrorTypes::UNKNOWN_USER                    => "Unknown user passed.",
-                ErrorTypes::MODEL_NOT_FOUND                 => "Model: {$keys[0]} not found.",
+                ErrorTypes::MODEL_NOT_FOUND                 => "{$data[0]} not found.",
                 ErrorTypes::UNAUTHORIZED                    => "Unauthorized action.",
                 ErrorTypes::INTERNAL_SERVER_ERROR           => 'Internal server error.'
             };

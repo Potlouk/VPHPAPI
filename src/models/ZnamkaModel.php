@@ -14,7 +14,7 @@ class ZnamkaModel extends Model{
     ];
 
     public $relations = [
-        'predmet' => ['one' => PredmetModel::class ],
+      
     ];
 
 

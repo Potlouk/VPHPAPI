@@ -20,7 +20,7 @@ class CollectionService implements CollectionInterface{
         );
 
         if (!$model)
-        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this) ]);
+        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this->model) ]);
 
         $model = $this->factory::build($model);
         $model->getRelations();
@@ -28,18 +28,21 @@ class CollectionService implements CollectionInterface{
         return $model;
     }
 
-    public function create(array $data): int{
+    public function create(array $data): array{
         $model = $this->factory::build($data);
-        return $model->create();  
+        return [ "id" => $model->create() ];  
     }
 
     public function patch(array $data): void{
-        $currentData = $this->find( 
-            $data["{$this->model->primaryKey}"]
+        $currentData = $this->model->find( 
+            $data["id"]
         );
 
+    ;
         if (!$currentData)
-        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this) ]);
+        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ 
+            basename(str_replace('\\', '/', get_class($this->model)))
+         ]);
 
         foreach($data as $key => $value)
         $currentData[$key] = $value;
@@ -50,11 +53,11 @@ class CollectionService implements CollectionInterface{
 
     public function delete($data): void{
         $currentData =  $this->model->find(
-            $data["{$this->model->primaryKey}"]
+            $data["id"]
         );
 
         if (!$currentData)
-        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this) ]);
+        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this->model) ]);
 
         $model = $this->factory::build($currentData);
         $model->delete();  

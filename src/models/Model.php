@@ -4,6 +4,7 @@ namespace src\models;
 use src\traits\DBConnection;
 
 use PDO;
+use src\Enums\ErrorTypes;
 use src\interfaces\ModelInterface;
 use src\traits\ApiException;
 use src\traits\Serialisation;
@@ -65,7 +66,7 @@ class Model implements ModelInterface{
         return $this->bindAndExecute([$array[0] => $array[1]], [$array[0] => 'string'])->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function find($id): array | bool {
+    public function find(int $id): array | bool {
         $this->query = "SELECT * FROM {$this->table} WHERE {$this->primaryKey} = ?";
         return $this->bindAndExecute(["{$this->primaryKey}" => $id],[ "{$this->primaryKey}" => 'integer'])->fetch(PDO::FETCH_ASSOC);
     }

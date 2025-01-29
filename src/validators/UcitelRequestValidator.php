@@ -2,7 +2,7 @@
 namespace src\validators;
 
 
-class studentRequestValidator extends Validator{
+class UcitelRequestValidator extends Validator{
 
     protected array $rules = [
         'jmeno'     => 'string',
@@ -10,7 +10,7 @@ class studentRequestValidator extends Validator{
         'id'        => 'integer|string',
         'limit'     => 'integer|min:1',
         'current'   => 'integer|min:1',
-        'trida'     => 'integer',
+        'trida_Id'  => 'integer',
     ];
 
     protected function getRules($request): void {}

@@ -20,18 +20,19 @@ class ZnamkyService extends CollectionService{
         $this->factory = ZnamkaModelFactory::class;
     }
 
-    public function create(array $data): int{
+    public function create(array $data): array {
       
         $znamkaId = parent::create($data);
-        $znamka = $this->factory::build($this->model->find($znamkaId));
+        $znamka = $this->factory::build($this->model->find($znamkaId["id"]));
 
         $nZnamka = StudentiZnamkyFactory::build(
             array_merge(
                 ['Znamky_Id' => $znamka->id ],
                 $data
             ));
-
-         return $nZnamka->create();    
+            
+        $nZnamka->create();    
+        return [ "id" => $znamka->id ];
     }
 
     

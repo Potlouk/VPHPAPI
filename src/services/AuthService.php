@@ -41,6 +41,6 @@ final class AuthService {
         if (!self::isMatchingPassword($data['heslo'], $user["heslo"]))
         ApiException::throw(ErrorTypes::USER_WRONG_PASSWORD);
 
-        return [ 'token'=> $uToken , 'user_id' => $user["id"] ];
+        return [ 'token'=> $uToken['token'] , 'user_id' => $user["id"] ];
     }
 }

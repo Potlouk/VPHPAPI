@@ -19,14 +19,15 @@ class StudentTStudentTest extends TestCase {
         ];
 
         $this->assertEquals(200, $response['statusCode']);
-        $this->assertJsonStructure(
-            json_decode($response['body'], true),
-            $expectedStructure
-        );
+
+        foreach ($expectedStructure as $key => $value) {
+            $this->assertArrayHasKey($key, $response['body']);
+        }
     }
 
     /**
      * @depends getTest
+     * @test
      */
     public function patchTest(): void {
         //jen mail ?
@@ -37,22 +38,8 @@ class StudentTStudentTest extends TestCase {
         $response = SendRequestAction::send('PATCH', "student/{$this->studentId}", $body);
         $this->assertEquals(200, $response['statusCode']);
         
-        
         $response = SendRequestAction::send('GET', "student/{$this->studentId}");
         $this->assertEquals($response['body']['jmeno'], $body['jmeno']);
     }
 
-
-    private function assertJsonStructure(array $expectedStructure, array $actualArray)
-    {
-        foreach ($expectedStructure as $key => $value) {
-            // Check if the key exists
-            $this->assertArrayHasKey($key, $actualArray, "Missing key: $key");
-    
-            // If the value is an array, check recursively for nested structure
-            if (is_array($value)) {
-                $this->assertJsonStructure($value, $actualArray[$key]);
-            }
-        }
-    }
 }

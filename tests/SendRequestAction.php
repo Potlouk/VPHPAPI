@@ -56,7 +56,7 @@ class SendRequestAction {
 
         return [
             'statusCode' => $statusCode,
-            'body'       => json_decode($body, true),
+            'body'       => json_decode($body, true)['data'],
             'cookies'    => isset($cookies) ? $cookies : []
         ];
     }

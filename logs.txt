@@ -118,3 +118,61 @@
 2025-01-22 19:09:10 - Not supported method.
 2025-01-22 19:25:41 - Not supported method.
 2025-01-25 08:30:49 - Not supported method.
+2025-01-26 15:36:28 - Model: 0 not found.
+2025-01-26 21:20:39 - Model: 0 not found.
+2025-01-26 21:22:51 - Model: 0 not found.
+2025-01-29 14:25:56 - Model: 0 not found.
+2025-01-29 14:29:11 - Model: 0 not found.
+2025-01-29 14:31:27 - Model: 0 not found.
+2025-01-29 14:32:23 - Model: 0 not found.
+2025-01-29 14:33:57 - Model: 0 not found.
+2025-01-29 14:33:58 - Model: 0 not found.
+2025-01-29 14:35:35 - Model: 0 not found.
+2025-01-29 14:36:07 - Model: 0 not found.
+2025-01-29 14:36:09 - Model: 0 not found.
+2025-01-29 14:36:10 - Model: 0 not found.
+2025-01-29 14:36:15 - Model: 0 not found.
+2025-01-29 14:39:17 - Model: 0 not found.
+2025-01-29 14:39:57 - Model: 0 not found.
+2025-01-29 14:40:19 - Model: 0 not found.
+2025-01-29 14:40:22 - Model: 0 not found.
+2025-01-29 15:06:56 - Model: 0 not found.
+2025-01-29 15:06:57 - Model: 0 not found.
+2025-01-29 15:06:58 - Model: 0 not found.
+2025-01-29 15:07:15 - Model: 0 not found.
+2025-01-29 15:07:16 - Model: 0 not found.
+2025-01-29 15:07:17 - Model: 0 not found.
+2025-01-29 15:07:54 - Model: 0 not found.
+2025-01-29 15:08:54 - Model: 0 not found.
+2025-01-29 15:08:55 - Model: 0 not found.
+2025-01-29 15:10:10 - Model: StudentModel not found.
+2025-01-29 15:10:28 - StudentModel not found.
+2025-01-29 15:18:54 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:19:35 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:19:55 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:20:04 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:22:06 - ZnamkaModel not found.
+2025-01-29 15:24:20 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:24:33 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:25:46 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:26:24 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:28:29 - ZnamkaModel not found.
+2025-01-29 15:29:26 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:30:23 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:32:16 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:35:10 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:36:35 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:38:52 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:44:34 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:45:54 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:46:04 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:46:23 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:46:28 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:47:26 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 15:57:38 - src\models\ZnamkaModel not found.
+2025-01-29 16:01:25 - src\models\ZnamkaModel not found.
+2025-01-29 16:02:41 - src\models\ZnamkaModel not found.
+2025-01-29 16:05:21 - src\models\ZnamkaModel not found.
+2025-01-29 16:05:29 - src\models\ZnamkaModel not found.
+2025-01-29 16:07:08 - src\models\ZnamkaModel not found.
+2025-01-29 16:07:12 - src\models\ZnamkaModel not found.

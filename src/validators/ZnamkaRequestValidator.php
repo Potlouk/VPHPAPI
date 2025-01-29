@@ -1,6 +1,7 @@
 <?php
 namespace src\validators;
 
+use src\requests\ApiRequest;
 
 class ZnamkaRequestValidator extends Validator{
 
@@ -11,9 +12,9 @@ class ZnamkaRequestValidator extends Validator{
         'zapsano'    => 'string',
     ];
 
-    protected function getRules($request): void {
-        if ($request->server["request_method"] == 'POST')
-            array_push($this->rules, [
+    protected function getRules(ApiRequest $request): void {
+        if ($request->method == 'POST')
+        $this->rules = array_merge($this->rules, [
                 'Studenti_Id' => 'integer|required',
                 'Predmety_Id' => 'integer|required',
         ]);

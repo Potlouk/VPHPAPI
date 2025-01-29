@@ -30,26 +30,26 @@ class Controller implements ControllerInterface{
      }
  
      public function create(ApiRequest $request): void{
-       $request = $this->requestValidator->validate($request->data);
+       $request = $this->requestValidator->validate($request);
        $modelId = $this->modelService->create($request);
        $this->response($modelId);
      }
  
      public function patch(ApiRequest $request): void{
-       $request = $this->requestValidator->validate($request->data);
+       $request = $this->requestValidator->validate($request);
        $this->modelService->patch($request);
        $this->response();
      }
  
      public function delete(ApiRequest $request): void{
-       $request = $this->requestValidator->validate($request->data);
+       $request = $this->requestValidator->validate($request);
        $this->modelService->delete($request);
        $this->response();
      }
  
      public function paginate(ApiRequest $request): void{
-       $request = $this->requestValidator->validate($request->data);
-       $result = $this->modelService->paginate($request);
+       $vRequest = $this->requestValidator->validate($request);
+       $result = $this->modelService->paginate($vRequest);
        $this->response(json_encode($result));
      }
  

@@ -21,6 +21,7 @@ class AuthTest extends TestCase {
         $this->assertArrayHasKey('token',   $response['cookies']);
         $this->assertArrayHasKey('user_id', $response['cookies']);
 
+     //   var_export($response);
         SendRequestAction::setCookies([
             'token' => $response['cookies']['token'] , 'user_id' => $response['cookies']['user_id']
         ]);
@@ -29,6 +30,7 @@ class AuthTest extends TestCase {
 
     /**
      * @depends testUserRegister
+     *  @test
      */
     public function testUserLogin(): void {
         $body = [

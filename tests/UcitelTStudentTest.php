@@ -1,58 +1,56 @@
 <?php 
 namespace tests;
 use PHPUnit\Framework\TestCase;
+use src\factories\ZnamkaModelFactory;
+use src\models\ZnamkaModel;
 
-class StudentTStudentTest extends TestCase {
-    private $studentId = 9;
-    
+class UcitelTStudentTest extends TestCase {
+    private static int $znamkaId;
     /** @test */
-    public function getTest(): void {
-  
-        $response = SendRequestAction::send('GET', "student/{$this->studentId}");
-
-        $expectedStructure = [
-            "jmeno"     => "",
-            "prijmeni"  => "",
-            "trida"     => [],
-            "predmety"  => [],
-            "znamky"    => [],
+    public function createGradeTest(): void {
+        //jen mail ?
+        $body = [
+            "poznamka"    => "testCreate",
+            "zapsano"     => "1111-11-11",
+            "znamka"      => 1,
+            "Studenti_Id" => 9,
+            "Predmety_Id" => 1
         ];
 
+        $response = SendRequestAction::send('POST', "znamka", $body);
         $this->assertEquals(200, $response['statusCode']);
-        $this->assertJsonStructure(
-            json_decode($response['body'], true),
-            $expectedStructure
-        );
+        $this->assertArrayHasKey('id', $response['body']);
+
+        self::$znamkaId = $response['body']['id'];
     }
 
     /**
-     * @depends getTest
+     * @depends createGradeTest
+     * @test
      */
-    public function patchTest(): void {
-        //jen mail ?
+    public function patchGradeTest(): void {
         $body = [
-            "jmeno" => "test",
+            "znamka" => 5,
         ];
 
-        $response = SendRequestAction::send('PATCH', "student/{$this->studentId}", $body);
+        $response = SendRequestAction::send('PATCH', "znamka/".self::$znamkaId, $body);
         $this->assertEquals(200, $response['statusCode']);
         
-        
-        $response = SendRequestAction::send('GET', "student/{$this->studentId}");
-        $this->assertEquals($response['body']['jmeno'], $body['jmeno']);
+        $response = SendRequestAction::send('GET', "znamka/".self::$znamkaId);
+        $this->assertEquals(200, $response['statusCode']);
+
+        $this->assertNotFalse($response);
+        $this->assertEquals($response['body']['znamka'], 5);
     }
-
-
-    private function assertJsonStructure(array $expectedStructure, array $actualArray)
-    {
-        foreach ($expectedStructure as $key => $value) {
-            // Check if the key exists
-            $this->assertArrayHasKey($key, $actualArray, "Missing key: $key");
-    
-            // If the value is an array, check recursively for nested structure
-            if (is_array($value)) {
-                $this->assertJsonStructure($value, $actualArray[$key]);
-            }
-        }
+    /**
+     * @depends patchGradeTest
+     * @test
+     */
+    public function deleteGradeTest(): void {
+        $response = SendRequestAction::send('DELETE', "znamka/".self::$znamkaId);
+        $this->assertEquals(200, $response['statusCode']);
+        
+        $response = SendRequestAction::send('GET', "znamka/".self::$znamkaId);
+        $this->assertEquals(500, $response['statusCode']);
     }
 }
