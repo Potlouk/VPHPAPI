@@ -5,13 +5,8 @@ use Dotenv\Dotenv;
 use src\factories\AuthControllerFactory;
 use Swoole\Http\Server;
 use src\factories\StudentControllerFactory;
-use src\factories\StudentiZnamkyControllerFactory;
-use src\factories\StudentiZnamkyFactory;
 use src\factories\UcitelControllerFactory;
 use src\factories\ZnamkaControllerFactory;
-use src\Middlewares\AuthMiddleware;
-use src\middlewares\ReadPermissionMiddleware;
-use src\middlewares\SelfCheckMiddleware;
 use src\requests\ApiRequest;
 use src\Router;
 use src\traits\ApiException;
@@ -31,29 +26,34 @@ $router = new Router();
 
 $server->on("start", function () use ($router) {
     //student routes  
-    $router->route('/student/{id}',              'GET', StudentControllerFactory::class,'get');//->middleware(['auth','selfCheck']);
-    $router->route('/student/{current}/{limit}', 'GET', StudentControllerFactory::class,'paginate');
-    $router->route('/student/{id}',              'PATCH', StudentControllerFactory::class,'patch');
+    $router->route('/student/{id}',              'GET', StudentControllerFactory::class,'get')->middleware(['auth','selfCheck']);
+    $router->route('/student/{current}/{limit}', 'GET', StudentControllerFactory::class,'paginate')->middleware(['auth','selfCheck']);
+    $router->route('/student/{id}',              'PATCH', StudentControllerFactory::class,'patch')->middleware(['auth','selfCheck']);
  
     //admin routes 
-    $router->route('/student',        'POST',    StudentControllerFactory::class,'create');
-    $router->route('/student/{id}',   'DELETE',  StudentControllerFactory::class,'delete');
-    $router->route('/ucitel',         'POST',    UcitelControllerFactory::class,'create');
-    $router->route('/ucitel/{id}',    'DELETE',  UcitelControllerFactory::class,'delete');
+    $router->route('/student',        'POST',    StudentControllerFactory::class,'create')->middleware(['auth','onlyAdmin']);
+    $router->route('/student/{id}',   'DELETE',  StudentControllerFactory::class,'delete')->middleware(['auth','onlyAdmin']);
+    $router->route('/ucitel',         'POST',    UcitelControllerFactory::class,'create')->middleware(['auth','onlyAdmin']);
+    $router->route('/ucitel/{id}',    'DELETE',  UcitelControllerFactory::class,'delete')->middleware(['auth','onlyAdmin']);
 
     //teacher routes
-    $router->route('/znamka',        'POST',  ZnamkaControllerFactory::class, 'create');//->middleware([AuthMiddleware::class]);
-    $router->route('/znamka/{id}',   'PATCH', ZnamkaControllerFactory::class, 'patch');
-    $router->route('/znamka/{id}',   'GET',   ZnamkaControllerFactory::class, 'get');
-    $router->route('/znamka/{id}',   'DELETE',ZnamkaControllerFactory::class, 'delete');
-
+    $router->route('/znamka',        'POST',  ZnamkaControllerFactory::class, 'create')->middleware(['auth','onlyTeacher']);
+    $router->route('/znamka/{id}',   'PATCH', ZnamkaControllerFactory::class, 'patch')->middleware(['auth','onlyTeacher']);
+    $router->route('/znamka/{id}',   'DELETE',ZnamkaControllerFactory::class, 'delete')->middleware(['auth','onlyTeacher']);
+    
     //open routes
     $router->route('/registrace', 'POST' , AuthControllerFactory::class, 'register');
     $router->route('/prihlaseni', 'POST' , AuthControllerFactory::class, 'login');
+    
+    //private routes
+    $router->route('/znamka/{id}',   'GET',   ZnamkaControllerFactory::class, 'get')->middleware(['private']);
+    $router->route('/ucitel/{id}',   'GET',   UcitelControllerFactory::class, 'get')->middleware(['private']);
+
 
 });
 
 $server->on("request", function ($request, $response) use ($router) {
+  
   $request = new ApiRequest($request); 
     
     try{ $router->resolve($request, $response); }

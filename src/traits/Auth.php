@@ -6,8 +6,7 @@ use src\Config;
 trait Auth {
 
     private static function createToken(int $length = 32): string {
-        //bett
-        return substr(str_shuffle(str_repeat(Config::getEnv('APP_CHAR_TOKEN_POOL'), $length)), 1, $length);
+       return bin2hex(random_bytes($length / 2));
     }
     
     private static function isMatchingToken(string $tokenA, string $tokenB): bool {
@@ -22,5 +21,8 @@ trait Auth {
         return password_hash($password, PASSWORD_BCRYPT, ["cost" => Config::getEnv('APP_HASH_COST')]);
     }
 
+    private static function isAdmin($auth) {
+        return is_null($auth->Ucitele_Id) && is_null($auth->Studenti_Id);
+    }
 
 }

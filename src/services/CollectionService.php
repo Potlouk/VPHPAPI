@@ -4,7 +4,6 @@ namespace src\services;
 use src\Enums\ErrorTypes;
 use src\interfaces\CollectionInterface;
 use src\models\Model;
-use src\models\ZnamkaModel;
 use src\traits\ApiException;
 
 class CollectionService implements CollectionInterface{
@@ -20,7 +19,7 @@ class CollectionService implements CollectionInterface{
         );
 
         if (!$model)
-        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this->model) ]);
+        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this->model) ], 404);
 
         $model = $this->factory::build($model);
         $model->getRelations();
@@ -41,7 +40,7 @@ class CollectionService implements CollectionInterface{
     ;
         if (!$currentData)
         ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ 
-            basename(str_replace('\\', '/', get_class($this->model)))
+            basename(str_replace('\\', '/', get_class($this->model)), 404)
          ]);
 
         foreach($data as $key => $value)
@@ -57,7 +56,7 @@ class CollectionService implements CollectionInterface{
         );
 
         if (!$currentData)
-        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this->model) ]);
+        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this->model) ], 404);
 
         $model = $this->factory::build($currentData);
         $model->delete();  

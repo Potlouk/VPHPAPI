@@ -3,12 +3,17 @@ namespace tests;
 use PHPUnit\Framework\TestCase;
 
 class StudentTStudentTest extends TestCase {
-        private $studentId = 9;
+    use HelperTrait;
+    private $studentId = 9;
     
     /** @test */
     public function getTest(): void {
-  
-        $response = SendRequestAction::send('GET', "student/{$this->studentId}");
+        self::$endpoint = 'student';
+        
+        $response = SendRequestAction::send( 
+            'GET', 
+            $this->getEndpointUrl($this->studentId)
+        );
 
         $expectedStructure = [
             "jmeno"     => "",
@@ -30,15 +35,21 @@ class StudentTStudentTest extends TestCase {
      * @test
      */
     public function patchTest(): void {
-        //jen mail ?
-        $body = [
-            "jmeno" => "test",
-        ];
+        $body = [ "jmeno" => "test" ];
 
-        $response = SendRequestAction::send('PATCH', "student/{$this->studentId}", $body);
+        $response = SendRequestAction::send(
+            'PATCH', 
+            $this->getEndpointUrl($this->studentId),
+            $body
+        );
+
         $this->assertEquals(200, $response['statusCode']);
         
-        $response = SendRequestAction::send('GET', "student/{$this->studentId}");
+        $response = SendRequestAction::send(
+            'GET',
+            $this->getEndpointUrl($this->studentId)
+        );
+
         $this->assertEquals($response['body']['jmeno'], $body['jmeno']);
     }
 

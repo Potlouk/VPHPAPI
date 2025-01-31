@@ -2,16 +2,21 @@
 namespace src;
 
 use src\Enums\ErrorTypes;
+use src\middlewares\AdminMiddleware;
 use src\middlewares\AuthMiddleware;
-use src\middlewares\SelfCheckMiddleware;
+use src\middlewares\CorseMiddleware;
+use src\middlewares\StudentMiddleware;
+use src\middlewares\TeacherMiddleware;
 use src\traits\ApiException;
 
 final class Config {
 
     public static array $middlewareLookup = [
-        'selfCheck' => SelfCheckMiddleware::class,
-        'auth'      => AuthMiddleware::class,
-
+        'selfCheck'  => StudentMiddleware::class,
+        'auth'       => AuthMiddleware::class,
+        'private'    => CorseMiddleware::class,
+        'onlyAdmin'  => AdminMiddleware::class,
+        'onlyTeacher'=> TeacherMiddleware::class
     ];
 
     public static function getEnv(string $name): mixed {

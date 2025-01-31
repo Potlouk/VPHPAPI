@@ -5,10 +5,12 @@ use src\factories\ZnamkaModelFactory;
 use src\models\ZnamkaModel;
 
 class UcitelTStudentTest extends TestCase {
+    use HelperTrait;
     private static int $znamkaId;
+
     /** @test */
     public function createGradeTest(): void {
-        //jen mail ?
+        self::$endpoint = 'znamka';
         $body = [
             "poznamka"    => "testCreate",
             "zapsano"     => "1111-11-11",
@@ -17,7 +19,11 @@ class UcitelTStudentTest extends TestCase {
             "Predmety_Id" => 1
         ];
 
-        $response = SendRequestAction::send('POST', "znamka", $body);
+        $response = SendRequestAction::send(
+            'POST',
+            $this->getEndpointUrl(),
+            $body
+        );
         $this->assertEquals(200, $response['statusCode']);
         $this->assertArrayHasKey('id', $response['body']);
 
@@ -29,16 +35,21 @@ class UcitelTStudentTest extends TestCase {
      * @test
      */
     public function patchGradeTest(): void {
-        $body = [
-            "znamka" => 5,
-        ];
+        $body = [ "znamka" => 5 ];
+        $response = SendRequestAction::send(
+            'PATCH', 
+            $this->getEndpointUrl(self::$znamkaId),
+            $body
+        );
 
-        $response = SendRequestAction::send('PATCH', "znamka/".self::$znamkaId, $body);
         $this->assertEquals(200, $response['statusCode']);
         
-        $response = SendRequestAction::send('GET', "znamka/".self::$znamkaId);
-        $this->assertEquals(200, $response['statusCode']);
+        $response = SendRequestAction::send(
+            'GET', 
+            $this->getEndpointUrl(self::$znamkaId)
+        );
 
+        $this->assertEquals(200, $response['statusCode']);
         $this->assertNotFalse($response);
         $this->assertEquals($response['body']['znamka'], 5);
     }
@@ -47,10 +58,19 @@ class UcitelTStudentTest extends TestCase {
      * @test
      */
     public function deleteGradeTest(): void {
-        $response = SendRequestAction::send('DELETE', "znamka/".self::$znamkaId);
+        $response = SendRequestAction::send(
+            'DELETE', 
+            $this->getEndpointUrl(self::$znamkaId)
+        );
+
         $this->assertEquals(200, $response['statusCode']);
         
-        $response = SendRequestAction::send('GET', "znamka/".self::$znamkaId);
-        $this->assertEquals(500, $response['statusCode']);
+        $response = SendRequestAction::send(
+            'GET', 
+            $this->getEndpointUrl(self::$znamkaId)
+        );
+
+        $this->assertEquals(404, $response['statusCode']);
     }
+
 }

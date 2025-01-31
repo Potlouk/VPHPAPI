@@ -7,13 +7,13 @@ use src\requests\ApiRequest;
 use src\traits\ApiException;
 use src\traits\Auth;
 
-final class SelfCheckMiddleware implements MiddlewareInterface {
- use Auth;
-    
+final class TeacherMiddleware implements MiddlewareInterface {
+    use Auth;
     static function resolve(ApiRequest &$request): void {
-        if($request->auth->Studenti_Id != $request->data['id'] && !$request->auth->Ucitele_Id)
-            ApiException::throw(ErrorTypes::UNAUTHORIZED, [] , 401);
+        if(!self::isAdmin($request->auth))
+            if (!is_null($request->auth->Studenti_Id))
+            ApiException::throw(ErrorTypes::UNAUTHORIZED);
     }
-}
 
+}
 ?>

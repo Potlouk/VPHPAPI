@@ -4,28 +4,25 @@ use PHPUnit\Framework\TestCase;
 
 class AuthTest extends TestCase {
 
-    
     /** @test */
     public function testUserRegister(): void {
 
        $body = [
             "heslo" => "heslo",
-            "jmeno" => "jmeno",
+            "jmeno" => "student",
             "Ucitele_Id"=> 1,
-            //"Studenti_Id" => 11,
+            //"Studenti_Id" => x,
         ];
 
-        $response = SendRequestAction::send('POST', 'registrace', $body);
+        $response = SendRequestAction::send(
+            'POST',
+            'registrace', 
+            $body
+        );
 
         $this->assertEquals(200, $response['statusCode']);
         $this->assertArrayHasKey('token',   $response['cookies']);
         $this->assertArrayHasKey('user_id', $response['cookies']);
-
-     //   var_export($response);
-        SendRequestAction::setCookies([
-            'token' => $response['cookies']['token'] , 'user_id' => $response['cookies']['user_id']
-        ]);
-
     }
 
     /**
@@ -35,13 +32,23 @@ class AuthTest extends TestCase {
     public function testUserLogin(): void {
         $body = [
             "heslo" => "heslo",
-            "jmeno" => "jmeno",
+            "jmeno" => "admin",
         ];
 
-        $response = SendRequestAction::send('POST', 'prihlaseni', $body);
+        $response = SendRequestAction::send(
+            'POST',
+            'prihlaseni',
+            $body
+        );
 
         $this->assertEquals(200, $response['statusCode']);
         $this->assertArrayHasKey('token',   $response['cookies']);
         $this->assertArrayHasKey('user_id', $response['cookies']);
+
+        SendRequestAction::setCookies([
+            'token' => $response['cookies']['token'] , 
+            'user_id' => $response['cookies']['user_id'],
+        ]);
+        
     }
 }

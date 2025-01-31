@@ -15,6 +15,9 @@ final class AuthService {
     public function register(array $data): array {
         $data["heslo"] = self::hash($data["heslo"]);
         
+        if (empty($data["Studenti_Id"] ?? null) && empty($data["Ucitele_Id"] ?? null))
+            ApiException::throw(ErrorTypes::REQUEST_REQUIREMENTS_NOT_MET);
+        
         $user = UzivatelFactory::build($data);
         $userId = $user->create();
 

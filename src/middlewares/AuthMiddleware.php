@@ -15,12 +15,12 @@ final class AuthMiddleware implements MiddlewareInterface {
  use Auth;
     
     static function resolve(ApiRequest &$request): void {
-        if (!array_key_exists('token',$request->cookie))
-            if (!$request->cookie['token'])
+
+        if (!is_array($request->cookie) || !array_key_exists('token', $request->cookie))
             ApiException::throw(ErrorTypes::AUTH_COOKIE_NOT_PASSED);
 
-        if (!array_key_exists('user_id',$request->cookie))
-            if (!$request->cookie['user_id'])
+
+        if (!array_key_exists('user_id',$request->cookie) || !array_key_exists('token',$request->cookie))
             ApiException::throw(ErrorTypes::AUTH_COOKIE_NOT_SATISFIED);
         
 

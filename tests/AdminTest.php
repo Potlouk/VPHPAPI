@@ -1,65 +1,90 @@
 <?php 
 namespace tests;
 use PHPUnit\Framework\TestCase;
-use src\factories\StudentModelFactory;
-use src\factories\UcitelModelFactory;
-use src\models\StudentModel;
-use src\models\UcitelModel;
 
 class AdminTest extends TestCase {
-    private int $studentId;
-    private int $ucitelId;
+    use HelperTrait;
+    private static int $studentId;
+    private static int $ucitelId;
      /** @test */
     public function createStudentTest(): void {
+        self::$endpoint = 'student';
         $body = [
             "jmeno"     => "testCreate",
             "prijmeni"  => "1111-11-11",
             "trida" => 1,
         ];
 
-        $response = SendRequestAction::send('POST', "student", $body);
+        $response = SendRequestAction::send(
+            'POST', 
+            $this->getEndpointUrl(), 
+            $body
+        );
 
         $this->assertEquals(200, $response['statusCode']);
         $this->assertArrayHasKey('id', $response['body']);
 
-        $this->studentId = $response['body']['id'];
+        self::$studentId = $response['body']['id'];
     }
 
     /**
      * @depends createStudentTest
+     * @test
      */
     public function deleteStudentTest(): void {
-        $response = SendRequestAction::send('DELETE', "student/{$this->studentId}");
+        $response = SendRequestAction::send(
+            'DELETE',
+            $this->getEndpointUrl(self::$studentId)
+        );
+
         $this->assertEquals(200, $response['statusCode']);
         
-        $student = new StudentModel();
-        $student = $student->find($this->studentId);
-        
-        $this->assertFalse($student);
+        $response = SendRequestAction::send(
+            'GET',
+            $this->getEndpointUrl(self::$studentId)
+        );
+
+        $this->assertEquals(404, $response['statusCode']);
+
     }
+    
    /** @test */
     public function createUcitelTest(): void {
+        self::$endpoint = 'ucitel';
         $body = [
             "jmeno"     => "testCreate",
             "trida_Id"  => 1,
         ];
 
-        $response = SendRequestAction::send('POST', "ucitel", $body);
+        $response = SendRequestAction::send(
+            'POST',
+            $this->getEndpointUrl(),
+            $body
+        );
+
         $this->assertEquals(200, $response['statusCode']);
         $this->assertArrayHasKey('id', $response['body']);
 
-        $this->ucitelId = $response['body']['id'];
+        self::$ucitelId = $response['body']['id'];
     }
     /**
      * @depends createUcitelTest
+     * @test
      */
     public function deleteUcitelTest(): void {
-        $response = SendRequestAction::send('DELETE', "ucitel/{$this->ucitelId}");
+        $response = SendRequestAction::send(
+            'DELETE',
+            $this->getEndpointUrl(self::$ucitelId)
+        );
+
         $this->assertEquals(200, $response['statusCode']);
-        
-        $ucitel = new UcitelModel();
-        $ucitel = $ucitel->find($this->ucitelId);
-        
-        $this->assertFalse($ucitel);
+
+        $response = SendRequestAction::send(
+            'GET',
+            $this->getEndpointUrl(self::$ucitelId)
+        );
+
+        $this->assertEquals(404, $response['statusCode']);
+
     }
 }

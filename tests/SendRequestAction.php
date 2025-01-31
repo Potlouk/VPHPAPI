@@ -54,9 +54,14 @@ class SendRequestAction {
             $cookies[$key] = trim($matches[2][$index]);
         }
 
+        if (!empty($body) && $body != null) {
+            $decodedBody = json_decode($body, true);
+            $body = isset($decodedBody['data']) ? $decodedBody['data'] : $decodedBody;
+        }
+
         return [
             'statusCode' => $statusCode,
-            'body'       => json_decode($body, true)['data'],
+            'body'       => $body ?? [],
             'cookies'    => isset($cookies) ? $cookies : []
         ];
     }

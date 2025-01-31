@@ -176,3 +176,226 @@
 2025-01-29 16:05:29 - src\models\ZnamkaModel not found.
 2025-01-29 16:07:08 - src\models\ZnamkaModel not found.
 2025-01-29 16:07:12 - src\models\ZnamkaModel not found.
+2025-01-29 16:47:18 - src\models\ZnamkaModel not found.
+2025-01-29 16:48:06 - src\models\ZnamkaModel not found.
+2025-01-29 16:49:02 - src\models\ZnamkaModel not found.
+2025-01-29 16:49:14 - src\models\ZnamkaModel not found.
+2025-01-29 16:49:27 - src\models\ZnamkaModel not found.
+2025-01-29 16:50:53 - src\models\ZnamkaModel not found.
+2025-01-29 16:51:57 - src\models\ZnamkaModel not found.
+2025-01-29 16:54:12 - src\models\ZnamkaModel not found.
+2025-01-29 16:55:49 - src\models\ZnamkaModel not found.
+2025-01-29 16:56:31 - src\models\StudentModel not found.
+2025-01-29 16:56:31 - Endpoint not found.
+2025-01-29 16:56:32 - src\models\ZnamkaModel not found.
+2025-01-29 16:58:02 - src\models\StudentModel not found.
+2025-01-29 16:58:05 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 16:58:06 - src\models\ZnamkaModel not found.
+2025-01-29 17:01:21 - src\models\StudentModel not found.
+2025-01-29 17:01:21 - Endpoint not found.
+2025-01-29 17:01:22 - src\models\ZnamkaModel not found.
+2025-01-29 20:34:18 - src\models\StudentModel not found.
+2025-01-29 20:34:19 - Endpoint not found.
+2025-01-29 20:34:22 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 20:36:07 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 20:36:35 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 20:37:38 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 20:39:48 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 20:43:39 - Connection faileds: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: Není znám žádný takový hostitel. 
+2025-01-29 21:08:11 - src\models\ZnamkaModel not found.
+2025-01-31 10:41:30 - src\models\StudentModel not found.
+2025-01-31 10:41:31 - src\models\ZnamkaModel not found.
+2025-01-31 11:11:53 - src\models\ZnamkaModel not found.
+2025-01-31 11:12:59 - src\models\StudentModel not found.
+2025-01-31 11:13:00 - src\models\ZnamkaModel not found.
+2025-01-31 11:17:21 - src\models\StudentModel not found.
+2025-01-31 11:17:34 - src\models\StudentModel not found.
+2025-01-31 11:17:54 - src\models\StudentModel not found.
+2025-01-31 11:17:56 - src\models\ZnamkaModel not found.
+2025-01-31 11:18:26 - src\models\StudentModel not found.
+2025-01-31 11:18:27 - src\models\ZnamkaModel not found.
+2025-01-31 11:19:24 - src\models\StudentModel not found.
+2025-01-31 11:19:25 - src\models\ZnamkaModel not found.
+2025-01-31 11:20:58 - Endpoint not found.
+2025-01-31 11:21:17 - src\models\UcitelModel not found.
+2025-01-31 11:21:32 - src\models\StudentModel not found.
+2025-01-31 11:21:32 - src\models\UcitelModel not found.
+2025-01-31 11:21:33 - src\models\ZnamkaModel not found.
+2025-01-31 11:21:50 - src\models\StudentModel not found.
+2025-01-31 11:21:50 - src\models\UcitelModel not found.
+2025-01-31 11:21:51 - src\models\ZnamkaModel not found.
+2025-01-31 13:35:14 - src\models\StudentModel not found.
+2025-01-31 13:35:14 - src\models\UcitelModel not found.
+2025-01-31 13:35:15 - src\models\ZnamkaModel not found.
+2025-01-31 13:43:17 - src\models\StudentModel not found.
+2025-01-31 13:43:18 - src\models\UcitelModel not found.
+2025-01-31 13:43:19 - src\models\ZnamkaModel not found.
+2025-01-31 13:48:42 - src\models\StudentModel not found.
+2025-01-31 13:48:42 - src\models\UcitelModel not found.
+2025-01-31 13:49:03 - src\models\StudentModel not found.
+2025-01-31 13:49:04 - src\models\UcitelModel not found.
+2025-01-31 13:49:05 - src\models\ZnamkaModel not found.
+2025-01-31 13:51:49 - src\models\StudentModel not found.
+2025-01-31 13:51:49 - src\models\UcitelModel not found.
+2025-01-31 13:51:50 - src\models\ZnamkaModel not found.
+2025-01-31 15:53:05 - src\models\StudentModel not found.
+2025-01-31 15:53:20 - src\models\StudentModel not found.
+2025-01-31 15:54:54 - src\models\StudentModel not found.
+2025-01-31 15:54:55 - Unauthorized action.
+2025-01-31 15:54:56 - Unauthorized action.
+2025-01-31 15:56:00 - src\models\StudentModel not found.
+2025-01-31 15:56:01 - Unauthorized action.
+2025-01-31 15:56:02 - Unauthorized action.
+2025-01-31 15:56:36 - src\models\StudentModel not found.
+2025-01-31 15:56:37 - src\models\UcitelModel not found.
+2025-01-31 15:56:38 - src\models\ZnamkaModel not found.
+2025-01-31 15:57:33 - src\models\StudentModel not found.
+2025-01-31 15:57:34 - Unauthorized action.
+2025-01-31 15:57:35 - Unauthorized action.
+2025-01-31 15:58:04 - src\models\StudentModel not found.
+2025-01-31 15:58:05 - Unauthorized action.
+2025-01-31 15:58:06 - Unauthorized action.
+2025-01-31 15:58:07 - src\models\StudentModel not found.
+2025-01-31 15:58:07 - Unauthorized action.
+2025-01-31 15:58:08 - Unauthorized action.
+2025-01-31 16:03:38 - src\models\StudentModel not found.
+2025-01-31 16:03:59 - src\models\StudentModel not found.
+2025-01-31 16:04:56 - src\models\StudentModel not found.
+2025-01-31 16:04:56 - Unauthorized action.
+2025-01-31 16:04:57 - Unauthorized action.
+2025-01-31 16:06:05 - src\models\StudentModel not found.
+2025-01-31 16:06:05 - Unauthorized action.
+2025-01-31 16:06:06 - Unauthorized action.
+2025-01-31 16:08:06 - src\models\StudentModel not found.
+2025-01-31 16:08:06 - Unauthorized action.
+2025-01-31 16:08:07 - Unauthorized action.
+2025-01-31 16:08:35 - src\models\StudentModel not found.
+2025-01-31 16:08:36 - src\models\UcitelModel not found.
+2025-01-31 16:08:37 - src\models\ZnamkaModel not found.
+2025-01-31 16:11:36 - src\models\StudentModel not found.
+2025-01-31 16:11:36 - src\models\UcitelModel not found.
+2025-01-31 16:11:37 - src\models\ZnamkaModel not found.
+2025-01-31 16:45:34 - Auth cookie not passed.
+2025-01-31 16:45:34 - src\models\UcitelModel not found.
+2025-01-31 16:45:35 - src\models\ZnamkaModel not found.
+2025-01-31 16:47:36 - Auth cookie not passed.
+2025-01-31 16:47:37 - src\models\UcitelModel not found.
+2025-01-31 16:47:38 - src\models\ZnamkaModel not found.
+2025-01-31 16:48:03 - Auth cookie not passed.
+2025-01-31 16:48:03 - src\models\UcitelModel not found.
+2025-01-31 16:48:04 - src\models\ZnamkaModel not found.
+2025-01-31 16:49:44 - Auth cookie not passed.
+2025-01-31 16:49:45 - src\models\UcitelModel not found.
+2025-01-31 16:49:46 - src\models\ZnamkaModel not found.
+2025-01-31 16:55:47 - Auth cookie not passed.
+2025-01-31 16:55:48 - src\models\UcitelModel not found.
+2025-01-31 16:55:49 - src\models\ZnamkaModel not found.
+2025-01-31 16:55:51 - Auth cookie not passed.
+2025-01-31 16:55:52 - src\models\UcitelModel not found.
+2025-01-31 16:55:53 - src\models\ZnamkaModel not found.
+2025-01-31 16:58:51 - src\models\StudentModel not found.
+2025-01-31 16:58:51 - src\models\UcitelModel not found.
+2025-01-31 16:58:52 - src\models\ZnamkaModel not found.
+2025-01-31 16:58:55 - src\models\StudentModel not found.
+2025-01-31 16:58:56 - src\models\UcitelModel not found.
+2025-01-31 16:58:56 - src\models\ZnamkaModel not found.
+2025-01-31 17:32:09 - src\models\StudentModel not found.
+2025-01-31 17:32:10 - src\models\UcitelModel not found.
+2025-01-31 17:32:10 - Unauthorized action.
+2025-01-31 17:33:30 - src\models\StudentModel not found.
+2025-01-31 17:33:30 - src\models\UcitelModel not found.
+2025-01-31 17:33:30 - Unauthorized action.
+2025-01-31 17:37:12 - src\models\StudentModel not found.
+2025-01-31 17:37:13 - src\models\UcitelModel not found.
+2025-01-31 17:37:13 - src\models\ZnamkaModel not found.
+2025-01-31 17:42:42 - src\models\StudentModel not found.
+2025-01-31 17:42:42 - src\models\UcitelModel not found.
+2025-01-31 17:42:43 - src\models\ZnamkaModel not found.
+2025-01-31 17:44:39 - src\models\StudentModel not found.
+2025-01-31 17:44:39 - src\models\UcitelModel not found.
+2025-01-31 17:44:40 - src\models\ZnamkaModel not found.
+2025-01-31 17:44:42 - src\models\StudentModel not found.
+2025-01-31 17:44:42 - src\models\UcitelModel not found.
+2025-01-31 17:44:43 - src\models\ZnamkaModel not found.
+2025-01-31 17:45:35 - Unauthorized action.
+2025-01-31 17:45:35 - Unauthorized action.
+2025-01-31 17:45:36 - src\models\ZnamkaModel not found.
+2025-01-31 17:50:46 - Request's atributes doesn't meet required data.
+2025-01-31 17:50:46 - Auth cookie not passed.
+2025-01-31 17:50:46 - Auth cookie not passed.
+2025-01-31 17:50:46 - Auth cookie not passed.
+2025-01-31 17:50:46 - Auth cookie not passed.
+2025-01-31 17:53:46 - Request's atributes doesn't meet required data.
+2025-01-31 17:53:46 - Auth cookie not passed.
+2025-01-31 17:53:46 - Auth cookie not passed.
+2025-01-31 17:53:46 - Auth cookie not passed.
+2025-01-31 17:53:46 - Auth cookie not passed.
+2025-01-31 17:54:13 - Request's atributes doesn't meet required data.
+2025-01-31 17:54:13 - Auth cookie not passed.
+2025-01-31 17:54:13 - Auth cookie not passed.
+2025-01-31 17:54:13 - Auth cookie not passed.
+2025-01-31 17:54:13 - Auth cookie not passed.
+2025-01-31 17:59:57 - Unauthorized action.
+2025-01-31 17:59:57 - Unauthorized action.
+2025-01-31 17:59:58 - src\models\ZnamkaModel not found.
+2025-01-31 18:03:28 - Auth cookie not passed.
+2025-01-31 18:03:28 - Auth cookie not passed.
+2025-01-31 18:03:28 - Auth cookie not passed.
+2025-01-31 18:03:28 - Auth cookie not passed.
+2025-01-31 18:03:41 - Unauthorized action.
+2025-01-31 18:03:41 - Unauthorized action.
+2025-01-31 18:03:41 - Unauthorized action.
+2025-01-31 18:03:42 - src\models\ZnamkaModel not found.
+2025-01-31 18:08:30 - Unauthorized action.
+2025-01-31 18:08:30 - Unauthorized action.
+2025-01-31 18:08:30 - Unauthorized action.
+2025-01-31 18:08:30 - Unauthorized action.
+2025-01-31 18:08:31 - Unauthorized action.
+2025-01-31 18:08:31 - Unauthorized action.
+2025-01-31 18:08:31 - Unauthorized action.
+2025-01-31 18:08:31 - Unauthorized action.
+2025-01-31 18:11:26 - Unauthorized action.
+2025-01-31 18:11:26 - Unauthorized action.
+2025-01-31 18:11:26 - Unauthorized action.
+2025-01-31 18:11:26 - src\models\ZnamkaModel not found.
+2025-01-31 18:12:09 - Unauthorized action.
+2025-01-31 18:12:09 - Unauthorized action.
+2025-01-31 18:12:09 - Unauthorized action.
+2025-01-31 18:12:10 - src\models\ZnamkaModel not found.
+2025-01-31 18:16:35 - Unauthorized action.
+2025-01-31 18:16:35 - Unauthorized action.
+2025-01-31 18:16:35 - Unauthorized action.
+2025-01-31 18:16:36 - src\models\ZnamkaModel not found.
+2025-01-31 18:20:45 - Unauthorized action.
+2025-01-31 18:20:45 - Unauthorized action.
+2025-01-31 18:20:45 - Unauthorized action.
+2025-01-31 18:20:46 - src\models\ZnamkaModel not found.
+2025-01-31 18:22:07 - Unauthorized action.
+2025-01-31 18:22:07 - Unauthorized action.
+2025-01-31 18:22:08 - src\models\ZnamkaModel not found.
+2025-01-31 18:27:37 - src\models\StudentModel not found.
+2025-01-31 18:27:37 - src\models\UcitelModel not found.
+2025-01-31 18:27:38 - src\models\ZnamkaModel not found.
+2025-01-31 18:30:30 - Unauthorized action.
+2025-01-31 18:30:30 - Unauthorized action.
+2025-01-31 18:30:30 - Unauthorized action.
+2025-01-31 18:30:31 - src\models\ZnamkaModel not found.
+2025-01-31 18:32:34 - Unauthorized action.
+2025-01-31 18:32:34 - Unauthorized action.
+2025-01-31 18:32:35 - src\models\ZnamkaModel not found.
+2025-01-31 20:18:44 - Unauthorized action.
+2025-01-31 20:18:44 - Unauthorized action.
+2025-01-31 20:18:45 - src\models\ZnamkaModel not found.
+2025-01-31 20:18:58 - Unauthorized action.
+2025-01-31 20:18:58 - Unauthorized action.
+2025-01-31 20:18:59 - src\models\ZnamkaModel not found.
+2025-01-31 20:19:24 - Unauthorized action.
+2025-01-31 20:19:24 - src\models\UcitelModel not found.
+2025-01-31 20:19:24 - Unauthorized action.
+2025-01-31 20:19:25 - src\models\ZnamkaModel not found.
+2025-01-31 20:22:25 - src\models\StudentModel not found.
+2025-01-31 20:22:25 - src\models\UcitelModel not found.
+2025-01-31 20:22:26 - src\models\ZnamkaModel not found.
+2025-01-31 20:24:35 - Unauthorized action.
+2025-01-31 20:24:35 - Unauthorized action.
+2025-01-31 20:24:35 - Unauthorized action.

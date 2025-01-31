@@ -4,9 +4,7 @@ namespace src\models;
 use src\traits\DBConnection;
 
 use PDO;
-use src\Enums\ErrorTypes;
 use src\interfaces\ModelInterface;
-use src\traits\ApiException;
 use src\traits\Serialisation;
 
 #[\AllowDynamicProperties]
