@@ -2,7 +2,7 @@
 namespace src\DTO;
 
 final class StudentiZnamkyDTO extends ModelDTO{
-    Protected $passable = [
+    protected array $passable = [
         "Predmety_id",
     ]; 
 

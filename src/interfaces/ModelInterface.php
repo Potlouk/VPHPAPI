@@ -1,11 +1,18 @@
 <?php
 namespace src\interfaces;
 interface ModelInterface{
-   public function where(array $arg): array | bool;
-   public function get(): array;
+
+    /**
+    * @param array<string> $arg
+    * @return array<string,mixed>
+    */
+   public function where(array $arg): array;
+  
+   public function get(): mixed;
    public function create(): int;
    public function patch(): void;
-   public function find(int $id): array | bool;
-  // public function __construct();
-  // public function exists(): self;
+  /**
+    * @return array<string>
+    */
+   public function find(int $id): array;
 }

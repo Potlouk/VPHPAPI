@@ -2,11 +2,13 @@
 namespace src\traits;
 
 use src\Config;
+use src\models\Model;
 
 trait Auth {
 
     private static function createToken(int $length = 32): string {
-       return bin2hex(random_bytes($length / 2));
+       $bytesNeeded = max(intdiv($length, 2), 1);
+       return bin2hex(random_bytes($bytesNeeded));
     }
     
     private static function isMatchingToken(string $tokenA, string $tokenB): bool {
@@ -21,7 +23,10 @@ trait Auth {
         return password_hash($password, PASSWORD_BCRYPT, ["cost" => Config::getEnv('APP_HASH_COST')]);
     }
 
-    private static function isAdmin($auth) {
+    private static function isAdmin(Model $auth) : bool {
+        if (!property_exists($auth,'Ucitele_Id') || !property_exists($auth,'Studenti_Id'))
+        return false;
+    
         return is_null($auth->Ucitele_Id) && is_null($auth->Studenti_Id);
     }
 

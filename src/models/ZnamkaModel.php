@@ -7,13 +7,13 @@ class ZnamkaModel extends Model{
     protected string $query = "";
     public int $id;
     
-    public $assignables = [
+    public array $assignables = [
         'poznamka' => 'string',
         'zapsano' => 'string',
         'znamka' => 'integer',
     ];
 
-    public $relations = [
+    public array $relations = [
       
     ];
 

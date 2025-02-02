@@ -7,7 +7,7 @@ class TridaModel extends Model{
     protected string $query = "";
     public int $id;
     
-    public $assignables = [
+    public array $assignables = [
         'nazev' => 'string',
     ];
 

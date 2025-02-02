@@ -11,7 +11,7 @@ final class TeacherMiddleware implements MiddlewareInterface {
     use Auth;
     static function resolve(ApiRequest &$request): void {
         if(!self::isAdmin($request->auth))
-            if (!is_null($request->auth->Studenti_Id))
+            if ($request->auth->Studenti_Id ?? null)
             ApiException::throw(ErrorTypes::UNAUTHORIZED);
     }
 

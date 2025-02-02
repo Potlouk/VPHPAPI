@@ -10,20 +10,25 @@ use Swoole\Http\Response;
 
 final class Router {
 
-    private array $routes = [[[]]];
+    /** @var array<string, array<int, array<string, \src\Path>>> */
+    private array $routes = [];
+
     private Path $lastRoute;
 
     public function __construct() {}
 
     public function route(string $path, string $request, string $controller, string $callback): self {
         $nArgs = 0;
-        $urlParams = $this->buildUrlParams($path,$nArgs);
+        $urlParams = $this->buildUrlParams($path, $nArgs);
 
         $this->routes[$request][$nArgs][$path] = new Path($path, $controller, $callback, $urlParams);
         $this->lastRoute = &$this->routes[$request][$nArgs][$path];
         return $this;
     }
 
+    /**
+     * @param array<int, string> $middlewares
+     */
     public function middleware(array $middlewares): void{
         $this->lastRoute->middleware = array_merge(
             $this->lastRoute->middleware,
@@ -31,15 +36,14 @@ final class Router {
         );
     }
    
-
     public function resolve(ApiRequest $request, Response $response): mixed {
         $requestMethod  = $request->server["request_method"];
         $requestPath    = $request->server["request_uri"];
 
         if (!$requestMethod || !$requestPath)
-        ApiException::throw(ErrorTypes::EMPTY_REQUEST);
-        if (!array_key_exists($requestMethod,$this->routes))
-        ApiException::throw(ErrorTypes::UNKNOWN_METHOD);
+            ApiException::throw(ErrorTypes::EMPTY_REQUEST);
+        if (!array_key_exists($requestMethod, $this->routes))
+            ApiException::throw(ErrorTypes::UNKNOWN_METHOD);
     
         $endpoint = $this->matchPath(
             $this->routes[$requestMethod],
@@ -51,7 +55,7 @@ final class Router {
             $endpoint->urlData
         );
 
-       $request->data = RequestDTO::transform($request,$urlData);
+        $request->data = RequestDTO::transform($request, $urlData);
 
         foreach ($endpoint->middleware as $middleware){
             $cMiddleware = MiddlewareConvertAction::convert($middleware);
@@ -59,29 +63,31 @@ final class Router {
                 ApiException::logError("Middleware: {$middleware} not found.");
                 continue;
             }
-            $cMiddleware::resolve($request);
+            strval($cMiddleware)::resolve($request);
         }
         
-        return call_user_func([
-            $endpoint->controller::build($response),
-            $endpoint->callback,
-        ], $request);
-
+        $controller = $endpoint->controller::build($response);
+        return $controller->{$endpoint->callback}($request);
     }
 
-    private function matchPath($searchArray, $requestPath): Path {
-        if (!is_array($searchArray))
-        ApiException::throw(ErrorTypes::UNSUPPORTED_PATH);
+   /**
+    * @param array<int, array<string, \src\Path>> $searchArray An array of paths; can be empty.
+    */
+    private function matchPath(array $searchArray, string $requestPath): Path {
+        $nArgs = substr_count($requestPath, '/');
 
-        $nArgs = substr_count($requestPath,'/');
-        foreach (array_keys($searchArray[$nArgs]) as $path){
-            if (substr_count($path,'/') != $nArgs) continue;
+        if (!isset($searchArray[$nArgs])) {
+            ApiException::throw(ErrorTypes::UNSUPPORTED_PATH);
+        }
 
+        $paths = array_keys($searchArray[$nArgs]);
+        foreach ($paths as $path){
+            if (substr_count($path, '/') != $nArgs) continue;
             $matched = false;
-            foreach(explode('/',$path) as $part){
+            foreach(explode('/', $path) as $part){
                 if (empty($part)) continue;
                 
-                if (!str_contains($requestPath,$part)){
+                if (!str_contains($requestPath, $part)){
                     $matched = false;
                     break;
                 }
@@ -89,20 +95,26 @@ final class Router {
                 $matched = true;
             }
             if ($matched)
-            return $searchArray[$nArgs][$path];
-            
+                return $searchArray[$nArgs][$path];
         }
+
         ApiException::throw(ErrorTypes::UNSUPPORTED_PATH);
+
+        // added to satisfy static analyzer.
+        return new \src\Path('', '', '', []);
     }
 
+    /**
+     * @return array<string, int>
+     */
     private function buildUrlParams(string &$path, int &$nArgs): array {
-        $nArgs = substr_count($path,'/');
+        $nArgs = substr_count($path, '/');
         $aPath = explode('/', trim($path, '/'));
         $result = [];
         $index = 0;
 
         foreach ($aPath as $part){
-            if (preg_match('/\{([^}]+)\}/', $part , $kl)){
+            if (preg_match('/\{([^}]+)\}/', $part, $kl)){
                 $result[$kl[1]] = $index;
                 $path = str_replace('{'.$kl[1].'}', '', $path);
             }
@@ -111,16 +123,19 @@ final class Router {
         return $result;
     }
 
+    /**
+     * @param array<string, int> $indexes
+     * @return array<string, string>
+     */
     private function extractUrlParams(string $url, array $indexes): array {
         $params = [];
         $urlParts = explode('/', trim($url, '/'));
  
         foreach ($indexes as $index => $part) 
-        $params[$index] = $urlParts[$part];
+            $params[$index] = $urlParts[$part];
     
         return $params;
     }
 
-
-
 }
+?>

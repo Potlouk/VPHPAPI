@@ -12,8 +12,10 @@ final class StudentMiddleware implements MiddlewareInterface {
     
     static function resolve(ApiRequest &$request): void {
         if(!self::isAdmin($request->auth))
-            if($request->auth->Studenti_Id != $request->data['id'] && !$request->auth->Ucitele_Id)
-                ApiException::throw(ErrorTypes::UNAUTHORIZED, [] , 401);
+        if (($request->auth->Studenti_Id ?? null) != ($request->data['id'] ?? null) 
+            && !($request->auth->Ucitele_Id ?? null)) 
+            ApiException::throw(ErrorTypes::UNAUTHORIZED);
+        
     }
 }
 

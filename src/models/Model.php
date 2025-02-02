@@ -15,8 +15,16 @@ class Model implements ModelInterface{
     protected string $table = '';
     protected string $query = "";
     public int $id;
-    public $assignables = [];
-    public $relations = [];
+     
+    /**
+     * @var array<string, string>
+     */
+    public array $assignables = [];
+
+    /**
+     * @var array<string, array<string, list<class-string>>>
+     */
+    public array $relations = [];
 
     public function getRelations(): void{
         
@@ -32,6 +40,9 @@ class Model implements ModelInterface{
         }
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function many(string $rObject, mixed $rClasses): array{
         $rObject = new $rObject(); 
         $rTable  = "{$this->table}_{$rObject->table}";
@@ -50,6 +61,9 @@ class Model implements ModelInterface{
         return $result;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function one(string $rObject, string $rValue) : array{
         $rObject = new $rObject();
 
@@ -59,18 +73,26 @@ class Model implements ModelInterface{
         return $this->executeQuery()->fetchAll(PDO::FETCH_ASSOC);
     }
 
-   public function where(array $array): array | bool {
+   public function where(array $array): array {
         $this->query = "SELECT * FROM {$this->table} WHERE {$array[0]} = ?";
-        return $this->bindAndExecute([$array[0] => $array[1]], [$array[0] => 'string'])->fetch(PDO::FETCH_ASSOC);
+        $result = $this->bindAndExecute([$array[0] => $array[1]], [$array[0] => 'string'])->fetch(PDO::FETCH_ASSOC);
+        if (!is_array($result))
+        return [];
+        
+        return $result;
     }
 
-    public function find(int $id): array | bool {
+    public function find(int $id): array {
         $this->query = "SELECT * FROM {$this->table} WHERE {$this->primaryKey} = ?";
-        return $this->bindAndExecute(["{$this->primaryKey}" => $id],[ "{$this->primaryKey}" => 'integer'])->fetch(PDO::FETCH_ASSOC);
+        $result = $this->bindAndExecute(["{$this->primaryKey}" => $id],[ "{$this->primaryKey}" => 'integer'])->fetch(PDO::FETCH_ASSOC);
+        if (!is_array($result))
+        return [];
+        
+        return $result;
     }
     /**
      * Fetches result of a sql command.
-     * @return array result.
+     * @return array<string, mixed> result.
      */
     public function get(): array{
         return $this->executeQuery()->fetchAll(PDO::FETCH_ASSOC);
@@ -103,10 +125,11 @@ class Model implements ModelInterface{
 
 
      /**
-     * Paginate query results.
-     * @param int $current page.
-     * @param int $limit of items on page.
-     * @return int Assigned Model's id.
+     * Paginates query results
+     * 
+     * @param int $current Current page number
+     * @param int $limit Number of items per page
+     * @return array{data: array<string, mixed>, currentPage: int, lastPage: int} Array containing paginated data and total count
      */
     public function paginate(int $current, int $limit): array{
         $totalRows = $this->getTotalResults();

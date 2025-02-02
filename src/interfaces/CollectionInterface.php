@@ -4,9 +4,30 @@ namespace src\interfaces;
 use src\models\Model;
 
 interface CollectionInterface{
-    public function all();
-    public function find();
-    public function delete(array $id);
-    public function get(array $request): Model;
-    public function paginate(array $request);
+    /**
+    * @param array<string, mixed> $data
+    */
+    public function delete(array $data): void;
+
+    /**
+    * @param array<string, mixed> $data
+    */
+    public function get(array $data): Model;
+    
+    /**
+    * @param array<string, mixed> $data
+    * @return array<string, mixed> $data
+    */
+    public function paginate(array $data): array;
+    
+    /**
+    * @param array<string, mixed> $data
+    * @return array<string, mixed> $data
+    */
+    public function create(array $data): array;
+    
+    /**
+    * @param array<string, mixed> $data
+    */
+    public function patch(array $data): void;
 }

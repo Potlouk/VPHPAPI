@@ -29,7 +29,7 @@ final class AuthMiddleware implements MiddlewareInterface {
 
         if (empty($auth))
             ApiException::throw(ErrorTypes::UNKNOWN_USER);
-
+        
         if (!self::isMatchingToken($request->cookie['token'], $auth['token']))
             ApiException::throw((ErrorTypes::USER_WRONG_TOKEN));
 

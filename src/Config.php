@@ -11,6 +11,9 @@ use src\traits\ApiException;
 
 final class Config {
 
+    /**
+    * @var array<string, class-string>
+    */
     public static array $middlewareLookup = [
         'selfCheck'  => StudentMiddleware::class,
         'auth'       => AuthMiddleware::class,

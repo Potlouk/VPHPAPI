@@ -5,11 +5,14 @@ use src\interfaces\ModelDTOInterface;
 use src\models\Model;
 
 class ModelDTO implements ModelDTOInterface{
-    Protected $passable = []; 
+    /**
+     * @var array<int|string> List of passable attribute names
+     */
+    protected array $passable = []; 
 
-    public function transform(Model $student): string{
-        $this->setParameters($student);
-        return json_encode($this->filterModel($student));
+    public function transform(Model $model): string | false {
+        $this->setParameters($model);
+        return json_encode($this->filterModel($model));
     }
 
     private function setParameters(Model $model): void{
@@ -26,14 +29,17 @@ class ModelDTO implements ModelDTOInterface{
         $this->passable = array_unique($this->passable);
     }
 
-    private function filterModel(Model $student): array{
+    /**
+     * @return array<string, mixed>
+     */
+    private function filterModel(Model $model): array{
         $temp = [];
-        foreach(array_keys(get_object_vars($student)) as $attribute)
+        foreach(array_keys(get_object_vars($model)) as $attribute)
             if (in_array($attribute, $this->passable))
-            $temp[$attribute] = $student->{$attribute};
+            $temp[$attribute] = $model->{$attribute};
 
 
-        foreach (array_keys($student->relations) as $rName)
+        foreach (array_keys($model->relations) as $rName)
             foreach ($temp[$rName] as &$attribute)
             $attribute = array_intersect_key($attribute,array_flip($this->passable));
         

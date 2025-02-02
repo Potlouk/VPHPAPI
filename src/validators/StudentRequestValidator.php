@@ -1,6 +1,7 @@
 <?php
 namespace src\validators;
 
+use src\requests\ApiRequest;
 
 class studentRequestValidator extends Validator{
 
@@ -13,5 +14,10 @@ class studentRequestValidator extends Validator{
         'trida'     => 'integer',
     ];
 
-    protected function getRules($request): void {}
+    protected function getRules(ApiRequest $request): void {
+        if (in_array($request->method, ['PATCH', 'DELETE']))
+        $this->rules = array_merge($this->rules, [
+                'id' => 'integer|required',
+        ]);
+    }
 }

@@ -1,6 +1,8 @@
 <?php
 namespace src\services;
 
+use src\Enums\ErrorTypes;
+use src\factories\ModelFactory;
 use src\factories\StudentiZnamkyFactory;
 use src\factories\StudentModelFactory;
 use src\factories\ZnamkaModelFactory;
@@ -9,11 +11,12 @@ use src\models\StudentiZnamky;
 use src\services\CollectionService;
 use src\models\StudentModel;
 use src\models\ZnamkaModel;
+use src\traits\ApiException;
 
 class ZnamkyService extends CollectionService{
     
     protected Model $model;
-    protected $factory;
+    protected mixed $factory;
 
     public function __construct(){
         $this->model = new ZnamkaModel;
@@ -23,7 +26,12 @@ class ZnamkyService extends CollectionService{
     public function create(array $data): array {
       
         $znamkaId = parent::create($data);
-        $znamka = $this->factory::build($this->model->find($znamkaId["id"]));
+        $znamkaData = $this->model->find($znamkaId["id"]);
+        
+        if (empty($znamkaData))
+        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND);
+
+        $znamka = $this->factory::build($znamkaData);
 
         $nZnamka = StudentiZnamkyFactory::build(
             array_merge(

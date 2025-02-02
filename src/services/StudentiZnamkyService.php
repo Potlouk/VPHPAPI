@@ -1,6 +1,7 @@
 <?php
 namespace src\services;
 
+use src\factories\ModelFactory;
 use src\factories\StudentiZnamkyFactory;
 use src\factories\StudentModelFactory;
 use src\factories\ZnamkaModelFactory;
@@ -13,11 +14,11 @@ use src\models\ZnamkaModel;
 class StudentiZnamkyService extends CollectionService{
     
     protected Model $model;
-    protected $factory;
+    protected mixed $factory;
 
     public function __construct(){
         $this->model = new StudentiZnamky;
-        $this->factory = StudentiZnamkyFactory::class;
+        $this->factory = new StudentiZnamkyFactory;
     }
 
 

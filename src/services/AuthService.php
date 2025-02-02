@@ -12,12 +12,16 @@ use src\traits\Auth;
 final class AuthService {
     use Auth; 
    
+    /**
+    * @param array<string, mixed> $data
+    * @return array<string, mixed>
+    */
     public function register(array $data): array {
         $data["heslo"] = self::hash($data["heslo"]);
         
-        if (empty($data["Studenti_Id"] ?? null) && empty($data["Ucitele_Id"] ?? null))
-            ApiException::throw(ErrorTypes::REQUEST_REQUIREMENTS_NOT_MET);
-        
+        if (array_key_exists('Studenti_Id',$data) && array_key_exists('Ucitele_Id',$data))
+        ApiException::throw(ErrorTypes::REQUEST_REQUIREMENTS_NOT_MET);
+
         $user = UzivatelFactory::build($data);
         $userId = $user->create();
 
@@ -28,14 +32,19 @@ final class AuthService {
 
         $uToken->create();
 
-        return [ 'token' => $uToken->token , 'user_id' => $userId ];
+        return [ 'token' => $uToken->token  , 'user_id' => $userId ];
+
     }
 
+    /**
+    * @param array<string, mixed> $data
+    * @return array<string, mixed>
+    */
     public function login(array $data): array {
         $user = new Uzivatel();
         $user = $user->where(["jmeno", $data['jmeno']]);
     
-        if(!$user)
+        if(empty($user))
         ApiException::throw(ErrorTypes::UNKNOWN_USER);
 
         $uToken = new UzivateleTokenModel();

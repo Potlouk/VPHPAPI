@@ -7,7 +7,7 @@ class StudentiZnamky extends Model{
     protected string $query = "";
     public int $id;
     
-    public $assignables = [
+    public array $assignables = [
         'Predmety_Id' => 'integer',
         'Znamky_Id' => 'integer',
         'Studenti_Id' => 'integer',

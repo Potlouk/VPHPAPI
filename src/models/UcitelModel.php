@@ -7,7 +7,7 @@ class UcitelModel extends Model{
     protected string $query = "";
     public int $id;
     
-    public $assignables = [
+    public array $assignables = [
         'jmeno' => 'string',
         'trida_Id' => 'integer',
     ];

@@ -7,15 +7,15 @@ class Uzivatel extends Model{
     protected string $query = "";
     public int $id;
     
-    public $assignables = [
+    public array $assignables = [
         'heslo' => 'string',
         'Studenti_Id' => 'null',
         'Ucitele_Id' => 'null',
         'jmeno' => 'string'
     ];
 
-    public $relations = [
-        'token' => ['one' => UzivateleTokenModel::class ],
+    public array $relations = [
+        'token' => ['one' => [ UzivateleTokenModel::class ]],
     ];
 
     

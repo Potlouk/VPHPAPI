@@ -9,7 +9,7 @@ use src\traits\ApiException;
 class CollectionService implements CollectionInterface{
 
     protected Model $model;
-    protected $factory;
+    protected mixed $factory;
 
     public function get(array $data): Model{
         $keyName = $this->model->primaryKey;
@@ -26,22 +26,26 @@ class CollectionService implements CollectionInterface{
         
         return $model;
     }
-
+    /**
+     * @param array<string,mixed> $data
+     * @return array<string,mixed>
+     */
     public function create(array $data): array{
         $model = $this->factory::build($data);
         return [ "id" => $model->create() ];  
     }
-
+    /**
+     * @param array<string,mixed> $data
+     */
     public function patch(array $data): void{
         $currentData = $this->model->find( 
             $data["id"]
         );
 
-    ;
-        if (!$currentData)
+        if (empty($currentData))
         ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ 
-            basename(str_replace('\\', '/', get_class($this->model)), 404)
-         ]);
+            basename(str_replace('\\', '/', get_class($this->model)))
+         ], 404);
 
         foreach($data as $key => $value)
         $currentData[$key] = $value;
@@ -49,19 +53,24 @@ class CollectionService implements CollectionInterface{
         $model = $this->factory::build($currentData);
         $model->patch();
     }
-
-    public function delete($data): void{
+    /**
+     * @param array<string,mixed> $data
+     */
+    public function delete(array $data): void{
         $currentData =  $this->model->find(
             $data["id"]
         );
 
-        if (!$currentData)
+        if (empty($currentData))
         ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this->model) ], 404);
 
         $model = $this->factory::build($currentData);
         $model->delete();  
     }
-
+    /**
+     * @param array<string,mixed> $data
+     * @return array<string,mixed>
+     */
     public function paginate(array $data): array{
         $result = (array) $this->model->paginate(
             $data['current'], 
@@ -71,8 +80,5 @@ class CollectionService implements CollectionInterface{
         return $result;
     }
 
-    public function all(){}
-    public function findOne(){}
-    public function find(){}
    
 }

@@ -5,18 +5,25 @@ use Exception;
 use src\Enums\ErrorTypes;
 final Class ApiException extends Exception {
 
-    public static function logError(string $message) {
+    public static function logError(string $message): void {
         $logFile = __DIR__ . '/../../logs.txt';
         file_put_contents($logFile, date('Y-m-d H:i:s') . ' - ' . $message . PHP_EOL, FILE_APPEND);
     }
 
-   public static function throw(ErrorTypes $error, array $data = [], int $statusCode = 500) {
+    /**
+     * @param array<mixed, mixed> $data
+    */
+   public static function throw(ErrorTypes $error, array $data = [], int $statusCode = 500): void {
         $description = self::getDescription($error,$data);    
         self::logError($description);
         throw new self($description, $statusCode);
     }
 
-    private static function getDescription(ErrorTypes $type, array $data = [] ){
+
+    /**
+     * @param array<string> $data
+     */
+    private static function getDescription(ErrorTypes $type, array $data = [] ): string{
         $keys = array_keys($data);
         return match ($type){
                 ErrorTypes::EMPTY_REQUEST                   => 'Empty request passed.',

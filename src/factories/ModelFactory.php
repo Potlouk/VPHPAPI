@@ -5,7 +5,12 @@ use src\models\Model;
 
 class ModelFactory{
 
-    protected static function make(Model $model ,array $array = []): Model{  
+    /**
+     * @param Model $model
+     * @param array<string, mixed> $array
+     * @return Model
+     */
+    protected static function make(Model $model, array $array = []): Model{  
         
         if(array_key_exists('id',$array)){
             $model->id = $array['id'];

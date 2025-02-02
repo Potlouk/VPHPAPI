@@ -5,6 +5,9 @@ use src\models\Model;
 use Swoole\Http\Request;
 
 class ApiRequest extends Request{
+    /**
+     * @var array<string, mixed>
+     */
     public array $data;
     public Model $auth;
     private parent $parent;
@@ -20,8 +23,8 @@ class ApiRequest extends Request{
     {   
         $this->parent = $request;
         $this->method = $request->getMethod();
-        foreach ($request as $key => $value) 
-        $this->$key = $value;
+        $this->server = $request->server ?? [];
+        $this->cookie = $request->cookie ?? [];
     }
 
 }

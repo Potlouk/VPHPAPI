@@ -9,7 +9,7 @@ use src\traits\ApiException;
 abstract class Validator implements ModelRequestValidatorInterface{
 
     /**
-     * Array containing request's requirements or sets them as passable data for any request. 
+     * @var array<string, mixed> Array containing request's requirements or sets them as passable data for any request.
      */
     protected array $rules = [];
 
@@ -19,9 +19,8 @@ abstract class Validator implements ModelRequestValidatorInterface{
     /**
      * Validate request based on specified rules in validator
      *
-     * @param   $request
-     * @return array array with matched keys of rules and request
-     *
+     * @param ApiRequest $request
+     * @return array<string, mixed> Array with matched keys of rules and request
      */
     public function validate(ApiRequest $request): array{
         $this->getRules($request);
@@ -69,7 +68,7 @@ abstract class Validator implements ModelRequestValidatorInterface{
     }
 
 
-    private function checkType($value, string $type): bool {
+    private function checkType(mixed $value, string $type): bool {
        return match ($type) {
             'integer'   => is_int($value) || (is_string($value) && ctype_digit($value)),
             'string'    => is_string($value),

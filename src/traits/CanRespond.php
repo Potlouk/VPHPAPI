@@ -7,8 +7,13 @@ trait CanRespond {
         "status" : "success",
         "message": "Request completed successfully",
     ';
-
-    protected function response(mixed $data = [], int $code = 200){
+    /**
+     * Sets body as part of the response.
+     *
+     * @param mixed $data .
+     * @param int                  $code    HTTP status code (default 200).
+     */
+    protected function response(mixed $data = [], int $code = 200): void {
         $this->appendData($data);
         $this->response->header('Content-Type','application/json');
         $this->response->status($code);
@@ -16,7 +21,14 @@ trait CanRespond {
         $this->response->end();
     }
 
-    protected function responseCookie(array $cookies, mixed $data = 'ok', int $code = 200){
+    /**
+     * Sets cookies as part of the response.
+     *
+     * @param array<string, mixed> $cookies An associative array of cookies.
+     * @param mixed                $data    Optional data (default 'ok').
+     * @param int                  $code    HTTP status code (default 200).
+     */
+    protected function responseCookie(array $cookies, mixed $data = 'ok', int $code = 200): void {
         $this->response->header('Content-Type','application/json');
         foreach ($cookies as $key => $value)
         $this->response->cookie($key, $value);

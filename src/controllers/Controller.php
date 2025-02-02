@@ -24,7 +24,8 @@ class Controller implements ControllerInterface{
     }
 
     public function get(ApiRequest $request): void{
-        $result = $this->modelService->get($request->data);
+        $request = $this->requestValidator->validate($request);
+        $result = $this->modelService->get($request);
         $result = $this->modelDTO->transform($result);
         $this->response($result);
      }

@@ -6,10 +6,11 @@ use src\controllers\UcitelController;
 use src\DTO\ModelDTO;
 use src\services\UcitelService;
 use src\validators\UcitelRequestValidator;
+use Swoole\Http\Response;
 
 class UcitelControllerFactory implements FactoryControllerInterface {
     
-    public static function build($response): UcitelController {
+    public static function build(Response $response): UcitelController {
         return new UcitelController(
             new UcitelService,
             new ModelDTO,

@@ -1,6 +1,8 @@
 <?php
 namespace src\validators;
 
+use src\requests\ApiRequest;
+use Swoole\Http\Request;
 
 class UcitelRequestValidator extends Validator{
 
@@ -13,5 +15,10 @@ class UcitelRequestValidator extends Validator{
         'trida_Id'  => 'integer',
     ];
 
-    protected function getRules($request): void {}
+    protected function getRules(ApiRequest $request): void {
+        if (in_array($request->method, ['PATCH', 'DELETE']))
+        $this->rules = array_merge($this->rules, [
+                'id' => 'integer|required',
+        ]);
+    }
 }

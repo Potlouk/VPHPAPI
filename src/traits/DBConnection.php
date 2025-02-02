@@ -4,14 +4,12 @@ namespace src\traits;
 use Exception;
 use PDO;
 use PDOException;
-use PDORow;
-use PDOStatement;
 
 trait DBConnection {
-    private static $instance = null;
-    private $connection;
+    private static ?self $instance = null;
+    private PDO $connection;
 
-    private function init() {
+    private function init(): void {
       
         $dsn = 'mysql:host=db;port=3306;dbname=PHPAPI';
         $username = 'root';
@@ -25,12 +23,12 @@ trait DBConnection {
         }
     }
 
-    private function logError(string $message) {
+    private function logError(string $message): void {
         $logFile = __DIR__ . '/../../logs.txt';
         file_put_contents($logFile, date('Y-m-d H:i:s') . ' - ' . $message . PHP_EOL, FILE_APPEND);
     }
 
-    private function getConnection() {
+    private function getConnection(): PDO {
         if (self::$instance === null) {
             self::$instance = new self();
             self::$instance->init();
@@ -39,19 +37,16 @@ trait DBConnection {
     }
 
      /**
-     * Binds values to placeholders in query query and executes.
-     * The indexes of array with values must correspond to order of query;
-     * @param  optional PDOinstance $db PDO instance.
-     * @return PDOinstance 
+     * Executes query
+     * @param  $db PDO instance.
+     * @return mixed
      */
-    private function executeQuery(mixed $db = null): mixed{
-      if($db === null) $db = $this->getConnection()->prepare($this->query);
-        try {
-            $db->execute();
-        } catch(Exception $e){
-            //create kill switch on errors lmao
-          echo $e;
-            return $e;
+    private function executeQuery(mixed $db = null): mixed {
+        if(is_null($db))
+        $db = $this->getConnection()->prepare($this->query);
+        
+        try { $db->execute(); } catch(Exception $e){
+            ApiException::logError($e);
         }
         
         return $db;
@@ -60,10 +55,10 @@ trait DBConnection {
      /**
      * Binds values to placeholders in query query and executes.
      * The indexes of array with values must correspond to order of query;
-     * @param  array $values Data for insertion with keys corresponding with Model's assignables.
-     * @param array $types Model's assignables.
+     * @param array<string, mixed> $values Data for insertion with keys corresponding with Model's assignables.
+     * @param array<string, string> $types Model's assignables.
      */
-    private function bindAndExecute(array $values, array $types) {
+    private function bindAndExecute(array $values, array $types): mixed {
         $index = 1;
         $db = $this->getConnection()->prepare($this->query);
        

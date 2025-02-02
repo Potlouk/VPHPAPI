@@ -7,13 +7,13 @@ class StudentModel extends Model{
     protected string $query = "";
     public int $id;
     //rename
-    public $assignables = [
+    public array $assignables = [
         'jmeno'    => 'string',
         'prijmeni' => 'string',
         'trida'    => 'integer',
     ];
 
-    public $relations = [
+    public array $relations = [
         'predmety' => ['many'   => [ PredmetModel::class ]],
         'znamky'   => ['many'   => [ PredmetModel::class, ZnamkaModel::class ]],
         'trida'    => ['one'    => [ TridaModel::class ]],
