@@ -6,7 +6,7 @@ use src\services\StudentService;
 use src\validators\studentRequestValidator;
 use Swoole\Http\Response;
 
-class StudentController extends Controller{
+final class StudentController extends Controller{
     public function __construct(
         private StudentService $student,
         private StudentDTO $studentDTO, 
@@ -15,6 +15,5 @@ class StudentController extends Controller{
         ) {
        parent::__construct($student,$studentDTO,$requestValidator,$response);
     }
-
-    
+ 
 }

@@ -7,5 +7,6 @@ interface ModelRequestValidatorInterface{
     /**
     * @return array<string, mixed>
     */
-    public function validate(ApiRequest $request): array;    
+    public function validate(ApiRequest $request): array;
+      
 }

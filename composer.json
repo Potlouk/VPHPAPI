@@ -1,6 +1,7 @@
 {
-    "name": "viktor/php-api",
-    "description": "api in php",
+    "name": "VPHPAPI",
+    "description": "REST API made in vanilla php ^8",
+    "version": "0.1.4.1",
     "license": "MIT",
     "autoload": {
         "psr-4": {

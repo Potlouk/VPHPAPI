@@ -1,7 +1,7 @@
 <?php
 namespace src\interfaces;
-interface ModelInterface{
 
+interface ModelInterface{
     /**
     * @param array<string> $arg
     * @return array<string,mixed>
@@ -15,4 +15,5 @@ interface ModelInterface{
     * @return array<string>
     */
    public function find(int $id): array;
+
 }

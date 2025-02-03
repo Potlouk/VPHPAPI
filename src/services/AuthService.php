@@ -55,4 +55,5 @@ final class AuthService {
 
         return [ 'token'=> $uToken['token'] , 'user_id' => $user["id"] ];
     }
+    
 }

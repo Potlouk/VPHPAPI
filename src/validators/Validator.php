@@ -13,7 +13,6 @@ abstract class Validator implements ModelRequestValidatorInterface{
      */
     protected array $rules = [];
 
-
     protected abstract function getRules(ApiRequest $request): void;
 
     /**
@@ -58,7 +57,6 @@ abstract class Validator implements ModelRequestValidatorInterface{
         return $request;
     }
 
-
     private function validateRange(string $valueA, string $valueB): bool{
         $x = (int) $valueB;
         $y = (int) explode(':',$valueA)[1];
@@ -66,7 +64,6 @@ abstract class Validator implements ModelRequestValidatorInterface{
         if (str_contains($valueA,'min')) return $x >= $y;
         else return $x <= $y;
     }
-
 
     private function checkType(mixed $value, string $type): bool {
        return match ($type) {
@@ -78,4 +75,5 @@ abstract class Validator implements ModelRequestValidatorInterface{
             default     => false
         };
     }
+
 }

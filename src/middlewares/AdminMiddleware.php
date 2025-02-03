@@ -15,4 +15,3 @@ final class AdminMiddleware implements MiddlewareInterface {
     }
 
 }
-?>

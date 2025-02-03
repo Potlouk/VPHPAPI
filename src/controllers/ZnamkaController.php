@@ -6,7 +6,7 @@ use src\services\ZnamkyService;
 use src\validators\ZnamkaRequestValidator;
 use Swoole\Http\Response;
 
-class ZnamkaController extends Controller{
+final class ZnamkaController extends Controller{
     public function __construct(
         private ZnamkyService $znamka,
         private ZnamkaDTO $znamkaDTO, 

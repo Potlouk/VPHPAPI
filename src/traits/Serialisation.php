@@ -1,5 +1,6 @@
 <?php
 namespace src\traits;
+
 trait Serialisation{
 
     /**
@@ -38,4 +39,5 @@ trait Serialisation{
             $array
         ));
     }
+
 }

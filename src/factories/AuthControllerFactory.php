@@ -7,7 +7,7 @@ use src\services\AuthService;
 use src\validators\AuthRequestValidator;
 use Swoole\Http\Response;
 
-class AuthControllerFactory implements FactoryControllerInterface {
+final class AuthControllerFactory implements FactoryControllerInterface {
 
     public static function build(Response $response): AuthController {
         return new AuthController(

@@ -32,10 +32,10 @@ class ModelFactory{
 
     private static function setDefaultValue(string $type): mixed{
         return match ($type) {
-            'integer' => 0,
-            'string' => '',
-            'bool' => false,
-            default => NULL
+            'integer'   => 0,
+            'string'    => '',
+            'bool'      => false,
+            default     => NULL
         };
     }
 

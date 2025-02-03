@@ -19,7 +19,6 @@ final Class ApiException extends Exception {
         throw new self($description, $statusCode);
     }
 
-
     /**
      * @param array<string> $data
      */
@@ -44,4 +43,5 @@ final Class ApiException extends Exception {
                 ErrorTypes::INTERNAL_SERVER_ERROR           => 'Internal server error.'
             };
     }
+    
 }

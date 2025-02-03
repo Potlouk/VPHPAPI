@@ -16,4 +16,3 @@ final class TeacherMiddleware implements MiddlewareInterface {
     }
 
 }
-?>

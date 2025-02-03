@@ -6,4 +6,5 @@ use Swoole\Http\Response;
 
 interface FactoryControllerInterface{
     public static function build(Response $response): Controller;
+    
 }

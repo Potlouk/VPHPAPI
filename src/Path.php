@@ -16,4 +16,5 @@ final class Path{
         public array $urlData,
         public array $middleware = [],
     ){}
+    
 }

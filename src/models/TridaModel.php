@@ -1,7 +1,8 @@
 <?php
 namespace src\models;
 
-class TridaModel extends Model{
+final class TridaModel extends Model{
+    
     public string $primaryKey = 'id';
     protected string $table = 'Tridy';
     protected string $query = "";
@@ -10,6 +11,5 @@ class TridaModel extends Model{
     public array $assignables = [
         'nazev' => 'string',
     ];
-
-    
+ 
 }

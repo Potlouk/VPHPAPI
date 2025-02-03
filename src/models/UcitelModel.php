@@ -1,16 +1,16 @@
 <?php
 namespace src\models;
 
-class UcitelModel extends Model{
+final class UcitelModel extends Model{
+    
     public string $primaryKey = 'id';
     protected string $table = 'Ucitele';
     protected string $query = "";
     public int $id;
     
     public array $assignables = [
-        'jmeno' => 'string',
-        'trida_Id' => 'integer',
+        'jmeno'     => 'string',
+        'trida_Id'  => 'integer',
     ];
 
-    
 }

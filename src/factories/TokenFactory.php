@@ -4,7 +4,7 @@ namespace src\factories;
 use src\models\Model;
 use src\models\UzivateleTokenModel;
 
-class TokenFactory extends ModelFactory{
+final class TokenFactory extends ModelFactory{
     /**
      * @param array<string, mixed> $array
      * @return Model

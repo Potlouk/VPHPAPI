@@ -7,11 +7,12 @@ trait CanRespond {
         "status" : "success",
         "message": "Request completed successfully",
     ';
+    
     /**
      * Sets body as part of the response.
      *
      * @param mixed $data .
-     * @param int                  $code    HTTP status code (default 200).
+     * @param int  $code  HTTP status code (default 200).
      */
     protected function response(mixed $data = [], int $code = 200): void {
         $this->appendData($data);
@@ -47,6 +48,5 @@ trait CanRespond {
 
         $this->responseFormat .= '}';
     }
-}
 
-?>
+}

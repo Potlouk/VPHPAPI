@@ -6,7 +6,7 @@ use src\services\AuthService;
 use src\validators\AuthRequestValidator;
 use Swoole\Http\Response;
 
-class AuthController extends Controller{
+final class AuthController extends Controller{
    
     public function __construct(
         private AuthService $auth,

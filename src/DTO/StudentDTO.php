@@ -6,6 +6,4 @@ final class StudentDTO extends ModelDTO{
         "Predmety_id",
     ]; 
 
-
-
 }

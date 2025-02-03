@@ -6,6 +6,4 @@ final class ZnamkaDTO extends ModelDTO{
         "Predmety_id",
     ]; 
 
-
-
 }

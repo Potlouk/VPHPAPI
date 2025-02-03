@@ -18,4 +18,5 @@ enum ErrorTypes {
    case MODEL_NOT_FOUND;
    case UNAUTHORIZED;
    case INTERNAL_SERVER_ERROR;
+   
 }

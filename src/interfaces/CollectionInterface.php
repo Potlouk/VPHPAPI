@@ -30,4 +30,5 @@ interface CollectionInterface{
     * @param array<string, mixed> $data
     */
     public function patch(array $data): void;
+    
 }

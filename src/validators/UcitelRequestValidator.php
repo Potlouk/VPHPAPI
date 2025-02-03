@@ -2,9 +2,8 @@
 namespace src\validators;
 
 use src\requests\ApiRequest;
-use Swoole\Http\Request;
 
-class UcitelRequestValidator extends Validator{
+final class UcitelRequestValidator extends Validator{
 
     protected array $rules = [
         'jmeno'     => 'string',

@@ -2,14 +2,10 @@
 namespace src\services;
 
 use src\Enums\ErrorTypes;
-use src\factories\ModelFactory;
 use src\factories\StudentiZnamkyFactory;
-use src\factories\StudentModelFactory;
 use src\factories\ZnamkaModelFactory;
-use src\models\Model;
-use src\models\StudentiZnamky;
 use src\services\CollectionService;
-use src\models\StudentModel;
+use src\models\Model;
 use src\models\ZnamkaModel;
 use src\traits\ApiException;
 
@@ -42,7 +38,5 @@ class ZnamkyService extends CollectionService{
         $nZnamka->create();    
         return [ "id" => $znamka->id ];
     }
-
-    
 
 }

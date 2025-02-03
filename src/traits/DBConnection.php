@@ -10,7 +10,6 @@ trait DBConnection {
     private PDO $connection;
 
     private function init(): void {
-      
         $dsn = 'mysql:host=db;port=3306;dbname=PHPAPI';
         $username = 'root';
         $password = '';
@@ -19,7 +18,7 @@ trait DBConnection {
             $this->connection = new PDO($dsn, $username, $password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            $this->logError('Connection faileds: ' . $e->getMessage());
+            $this->logError('Connection failed: ' . $e->getMessage());
         }
     }
 

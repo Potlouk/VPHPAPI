@@ -4,8 +4,7 @@ namespace src\factories;
 use src\models\Model;
 use src\models\StudentModel;
 
-class StudentModelFactory extends ModelFactory{
-
+final class StudentModelFactory extends ModelFactory{
      /**
      * @param array<string, mixed> $array
      * @return Model

@@ -8,7 +8,7 @@ use src\services\ZnamkyService;
 use src\validators\ZnamkaRequestValidator;
 use Swoole\Http\Response;
 
-class ZnamkaControllerFactory implements FactoryControllerInterface {
+final class ZnamkaControllerFactory implements FactoryControllerInterface {
     
     public static function build(Response $response): ZnamkaController {
         return new ZnamkaController(

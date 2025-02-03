@@ -2,9 +2,8 @@
 namespace src\validators;
 
 use src\requests\ApiRequest;
-use Swoole\Http\Request;
 
-class StudentiZnamkyValidator extends Validator{
+final class StudentiZnamkyValidator extends Validator{
 
     protected array $rules = [
         'jmeno'     => 'string',

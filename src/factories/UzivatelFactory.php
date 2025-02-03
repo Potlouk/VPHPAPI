@@ -4,7 +4,7 @@ namespace src\factories;
 use src\models\Model;
 use src\models\Uzivatel;
 
-class UzivatelFactory extends ModelFactory{
+final class UzivatelFactory extends ModelFactory{
     /**
      * @param array<string, mixed> $array
      * @return Model

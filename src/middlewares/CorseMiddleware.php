@@ -8,7 +8,7 @@ use src\requests\ApiRequest;
 use src\traits\ApiException;
 
 final class CorseMiddleware implements MiddlewareInterface {
-    
+
     static function resolve(ApiRequest &$request): void {
         $whiteList = [];
         array_push($whiteList, Config::getEnv('APP_INTERNAL_IP'));
@@ -19,4 +19,3 @@ final class CorseMiddleware implements MiddlewareInterface {
     }
 
 }
-?>

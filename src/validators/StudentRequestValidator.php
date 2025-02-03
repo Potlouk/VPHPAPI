@@ -3,7 +3,7 @@ namespace src\validators;
 
 use src\requests\ApiRequest;
 
-class studentRequestValidator extends Validator{
+final class studentRequestValidator extends Validator{
 
     protected array $rules = [
         'jmeno'     => 'string',

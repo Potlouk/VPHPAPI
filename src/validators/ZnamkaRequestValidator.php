@@ -3,7 +3,7 @@ namespace src\validators;
 
 use src\requests\ApiRequest;
 
-class ZnamkaRequestValidator extends Validator{
+final class ZnamkaRequestValidator extends Validator{
 
     protected array $rules = [
         'id'         => 'integer',
@@ -19,6 +19,5 @@ class ZnamkaRequestValidator extends Validator{
                 'Predmety_Id' => 'integer|required',
         ]);
     }
-}
 
-?>
+}

@@ -26,6 +26,7 @@ class CollectionService implements CollectionInterface{
         
         return $model;
     }
+    
     /**
      * @param array<string,mixed> $data
      * @return array<string,mixed>
@@ -34,6 +35,7 @@ class CollectionService implements CollectionInterface{
         $model = $this->factory::build($data);
         return [ "id" => $model->create() ];  
     }
+
     /**
      * @param array<string,mixed> $data
      */
@@ -53,6 +55,7 @@ class CollectionService implements CollectionInterface{
         $model = $this->factory::build($currentData);
         $model->patch();
     }
+
     /**
      * @param array<string,mixed> $data
      */
@@ -67,6 +70,7 @@ class CollectionService implements CollectionInterface{
         $model = $this->factory::build($currentData);
         $model->delete();  
     }
+
     /**
      * @param array<string,mixed> $data
      * @return array<string,mixed>
@@ -79,6 +83,5 @@ class CollectionService implements CollectionInterface{
 
         return $result;
     }
-
    
 }

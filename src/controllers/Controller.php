@@ -54,5 +54,4 @@ class Controller implements ControllerInterface{
        $this->response(json_encode($result));
      }
  
-  
 }

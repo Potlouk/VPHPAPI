@@ -8,7 +8,7 @@ use src\services\StudentiZnamkyService;
 use src\validators\StudentiZnamkyValidator;
 use Swoole\Http\Response;
 
-class StudentiZnamkyControllerFactory implements FactoryControllerInterface {
+final class StudentiZnamkyControllerFactory implements FactoryControllerInterface {
     
     public static function build(Response $response): StudentiZnamkyController {
         return new StudentiZnamkyController(

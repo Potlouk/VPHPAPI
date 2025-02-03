@@ -4,8 +4,8 @@ namespace src\factories;
 use src\models\Model;
 use src\models\UcitelModel;
 
-class UcitelModelFactory extends ModelFactory{
-  /**
+final class UcitelModelFactory extends ModelFactory{
+     /**
      * @param array<string, mixed> $array
      * @return Model
      */

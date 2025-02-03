@@ -27,7 +27,6 @@ class Model implements ModelInterface{
     public array $relations = [];
 
     public function getRelations(): void{
-        
         foreach ($this->relations as $rName => $relation) {
             $reType   = key($relation);
             $rClasses = $relation[$reType];
@@ -90,6 +89,7 @@ class Model implements ModelInterface{
         
         return $result;
     }
+
     /**
      * Fetches result of a sql command.
      * @return array<string, mixed> result.
@@ -102,13 +102,13 @@ class Model implements ModelInterface{
      * Saves model into database and sets its id.
      * @return int Assigned Model's id.
      */
-    public function create(): int{
+    public function create(): int {
         $mANames      =  $this->toKeyNameString($this->assignables);
         $placeholders =  $this->toStringPlaceHolder($this->assignables,'?');
         $this->query  = "INSERT INTO {$this->table} ({$mANames}) VALUES ({$placeholders})";
     
         $this->bindAndExecute(get_object_vars($this), $this->assignables);
-        return $this->getId();
+        return intval($this->getConnection()->lastInsertId());
     }
     
     public function patch(): void{
@@ -133,26 +133,16 @@ class Model implements ModelInterface{
      */
     public function paginate(int $current, int $limit): array{
         $totalRows = $this->getTotalResults();
-
         $currentPage = ($current - 1) * $limit;
 
         $this->query = "SELECT * FROM {$this->table} ORDER BY {$this->primaryKey} DESC LIMIT ?,?";
         $result = $this->bindAndExecute(["current" => $currentPage , "limit" => $limit ],["current" => 'integer', "limit" => 'integer']);
      
-        
         return [
             "data"        => $result->fetchAll(PDO::FETCH_ASSOC),
             "currentPage" => $current,
             "lastPage"    => intval(ceil($totalRows/$limit)),
         ];
-    }
-
-     /**
-     * Returns last inserted id of model.
-     * @return int Assigned Model's id.
-     */
-    private function getId(): int{
-        return intval($this->getConnection()->lastInsertId());
     }
 
     private function getTotalResults(): int{

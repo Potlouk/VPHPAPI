@@ -6,7 +6,7 @@ use src\services\UcitelService;
 use src\validators\Validator;
 use Swoole\Http\Response;
 
-class UcitelController extends Controller{
+final class UcitelController extends Controller{
     public function __construct(
         private UcitelService $student,
         private ModelDTO $studentDTO, 
@@ -16,5 +16,4 @@ class UcitelController extends Controller{
        parent::__construct($student,$studentDTO,$requestValidator,$response);
     }
 
-    
 }

@@ -8,7 +8,7 @@ use src\services\UcitelService;
 use src\validators\UcitelRequestValidator;
 use Swoole\Http\Response;
 
-class UcitelControllerFactory implements FactoryControllerInterface {
+final class UcitelControllerFactory implements FactoryControllerInterface {
     
     public static function build(Response $response): UcitelController {
         return new UcitelController(

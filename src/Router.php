@@ -6,6 +6,7 @@ use src\DTO\RequestDTO;
 use src\Enums\ErrorTypes;
 use src\requests\ApiRequest;
 use src\traits\ApiException;
+use Swoole\Http\Request;
 use Swoole\Http\Response;
 
 final class Router {
@@ -57,14 +58,7 @@ final class Router {
 
         $request->data = RequestDTO::transform($request, $urlData);
 
-        foreach ($endpoint->middleware as $middleware){
-            $cMiddleware = MiddlewareConvertAction::convert($middleware);
-            if (!$cMiddleware) {
-                ApiException::logError("Middleware: {$middleware} not found.");
-                continue;
-            }
-            strval($cMiddleware)::resolve($request);
-        }
+        $this->executeMiddlewares($endpoint,$request);
         
         $controller = $endpoint->controller::build($response);
         return $controller->{$endpoint->callback}($request);
@@ -91,7 +85,7 @@ final class Router {
                     $matched = false;
                     break;
                 }
-                
+
                 $matched = true;
             }
             if ($matched)
@@ -137,5 +131,15 @@ final class Router {
         return $params;
     }
 
+    private function executeMiddlewares(Path $endpoint, Request $request): void {
+        foreach ($endpoint->middleware as $middleware){
+            $cMiddleware = MiddlewareConvertAction::convert($middleware);
+            if (!$cMiddleware) {
+                ApiException::logError("Middleware: {$middleware} not found.");
+                continue;
+            }
+            strval($cMiddleware)::resolve($request);
+        }
+    }
+    
 }
-?>

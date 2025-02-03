@@ -1,7 +1,6 @@
 <?php
 namespace src\services;
 
-use src\factories\ModelFactory;
 use src\factories\StudentModelFactory;
 use src\models\Model;
 use src\services\CollectionService;

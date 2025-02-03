@@ -3,7 +3,7 @@ namespace src\validators;
 
 use src\requests\ApiRequest;
 
-class AuthRequestValidator extends Validator{
+final class AuthRequestValidator extends Validator{
 
     protected array $rules = [
         'jmeno'       => 'string',
@@ -19,4 +19,5 @@ class AuthRequestValidator extends Validator{
                 'heslo' => 'string|required'
         ]);
     }
+
 }
