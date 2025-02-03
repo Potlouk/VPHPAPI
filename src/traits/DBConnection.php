@@ -4,27 +4,29 @@ namespace src\traits;
 use Exception;
 use PDO;
 use PDOException;
+use src\Config;
+use src\Enums\ErrorTypes;
 
 trait DBConnection {
     private static ?self $instance = null;
     private PDO $connection;
 
     private function init(): void {
-        $dsn = 'mysql:host=db;port=3306;dbname=PHPAPI';
-        $username = 'root';
-        $password = '';
+        $name = Config::getEnv('DB_NAME');
+        $port = Config::getEnv('DB_PORT');
+        $host = Config::getEnv('DB_HOST');
+        $username =  Config::getEnv('DB_USER');
+        $password =  Config::getEnv('DB_PASSWORD');
+
+        $dsn = "mysql:host={$host};port={$port};dbname={$name}";
 
      try {
             $this->connection = new PDO($dsn, $username, $password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            $this->logError('Connection failed: ' . $e->getMessage());
+            ApiException::logError('PDO ERROR: ' . $e->getMessage());
+            ApiException::throw(ErrorTypes::INTERNAL_SERVER_ERROR);
         }
-    }
-
-    private function logError(string $message): void {
-        $logFile = __DIR__ . '/../../logs.txt';
-        file_put_contents($logFile, date('Y-m-d H:i:s') . ' - ' . $message . PHP_EOL, FILE_APPEND);
     }
 
     private function getConnection(): PDO {

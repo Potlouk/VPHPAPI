@@ -1,11 +1,14 @@
 <?php 
 namespace tests;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\Depends;
+use tests\helpers\SendRequestAction;
 
 class AuthTest extends TestCase {
 
-    /** @test */
-    public function testUserRegister(): void {
+    #[Test]
+    public function userCanBeRegistered(): void {
 
        $body = [
             "heslo" => "heslo",
@@ -25,11 +28,9 @@ class AuthTest extends TestCase {
         $this->assertArrayHasKey('user_id', $response['cookies']);
     }
 
-    /**
-     * @depends testUserRegister
-     *  @test
-     */
-    public function testUserLogin(): void {
+    #[Test]
+    #[Depends('userCanBeRegistered')]
+    public function userCanLogin(): void {
         $body = [
             "heslo" => "heslo",
             "jmeno" => "admin",

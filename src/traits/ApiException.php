@@ -2,11 +2,11 @@
 namespace src\traits;
 
 use Exception;
+use src\Config;
 use src\Enums\ErrorTypes;
 final Class ApiException extends Exception {
-
     public static function logError(string $message): void {
-        $logFile = __DIR__ . '/../../logs.txt';
+        $logFile = dirname(__DIR__, 2) . '/' . Config::getEnv('APP_LOG_FILE_NAME');
         file_put_contents($logFile, date('Y-m-d H:i:s') . ' - ' . $message . PHP_EOL, FILE_APPEND);
     }
 

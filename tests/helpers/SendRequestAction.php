@@ -1,12 +1,13 @@
 <?php
-namespace tests;
+namespace tests\helpers;
+
 use Dotenv\Dotenv;
 use src\Config;
 
-$dotenv = Dotenv::createImmutable(dirname(__DIR__, 1));
+$dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));
 $dotenv->safeLoad();
 
-class SendRequestAction {
+final class SendRequestAction {
 
     private static array $cookies = [];
 

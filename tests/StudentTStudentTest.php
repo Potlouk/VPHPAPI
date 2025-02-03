@@ -1,13 +1,17 @@
 <?php 
 namespace tests;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\Depends;
+use tests\helpers\HelperTrait;
+use tests\helpers\SendRequestAction;
 
 class StudentTStudentTest extends TestCase {
     use HelperTrait;
     private $studentId = 9;
     
-    /** @test */
-    public function getTest(): void {
+    #[Test]
+    public function studentDataCanBeLoaded(): void {
         self::$endpoint = 'student';
         
         $response = SendRequestAction::send( 
@@ -30,11 +34,9 @@ class StudentTStudentTest extends TestCase {
         }
     }
 
-    /**
-     * @depends getTest
-     * @test
-     */
-    public function patchTest(): void {
+    #[Test]
+    #[Depends('studentDataCanBeLoaded')]
+    public function studentDataCanBeEdited(): void {
         $body = [ "jmeno" => "test" ];
 
         $response = SendRequestAction::send(

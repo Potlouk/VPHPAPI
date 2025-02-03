@@ -21,6 +21,7 @@ $server = new Server(
   Config::getEnv('SERVER_IP'),
   Config::getEnv('SERVER_PORT'),
 );
+
 $router = new Router();
 
 $server->on("start", function () use ($router) {
@@ -43,7 +44,7 @@ $server->on("start", function () use ($router) {
     //private routes
     $router->route('/znamka/{id}',   'GET',   ZnamkaControllerFactory::class, 'get')->middleware(['private']);
     $router->route('/ucitel/{id}',   'GET',   UcitelControllerFactory::class, 'get')->middleware(['private']);
-    
+
     //open routes
     $router->route('/registrace', 'POST' , AuthControllerFactory::class, 'register');
     $router->route('/prihlaseni', 'POST' , AuthControllerFactory::class, 'login');

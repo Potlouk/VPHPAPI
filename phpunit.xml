@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit 
     bootstrap="vendor/autoload.php"
-    displayDetailsOnTestsThatTriggerWarnings="true">
+    displayDetailsOnTestsThatTriggerWarnings="true"
+    displayDetailsOnTestsThatTriggerDeprecations="true">
     <testsuites>
         <testsuite name="Application Test Suite">
              <file>tests/AuthTest.php</file>
              <file>tests/AdminTest.php</file>
              <file>tests/StudentTStudentTest.php</file>
-             <file>tests/UcitelTStudentTest.php</file>
+             <file>tests/TeacherTStudentTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

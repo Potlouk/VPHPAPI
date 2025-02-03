@@ -1,5 +1,5 @@
 <?php 
-namespace tests;
+namespace tests\helpers;
 
 trait HelperTrait {
     private static string $endpoint;

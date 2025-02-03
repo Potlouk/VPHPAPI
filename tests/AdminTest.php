@@ -1,13 +1,18 @@
 <?php 
 namespace tests;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\Depends;
+use tests\helpers\HelperTrait;
+use tests\helpers\SendRequestAction;
 
 class AdminTest extends TestCase {
     use HelperTrait;
     private static int $studentId;
     private static int $ucitelId;
-     /** @test */
-    public function createStudentTest(): void {
+    
+    #[Test]
+    public function studentAccountCanBeCreated(): void {
         self::$endpoint = 'student';
         $body = [
             "jmeno"     => "testCreate",
@@ -27,11 +32,9 @@ class AdminTest extends TestCase {
         self::$studentId = $response['body']['id'];
     }
 
-    /**
-     * @depends createStudentTest
-     * @test
-     */
-    public function deleteStudentTest(): void {
+    #[Test]
+    #[Depends('studentAccountCanBeCreated')]
+    public function studentAccountCanBeDeleted(): void {
         $response = SendRequestAction::send(
             'DELETE',
             $this->getEndpointUrl(self::$studentId)
@@ -48,8 +51,8 @@ class AdminTest extends TestCase {
 
     }
     
-   /** @test */
-    public function createUcitelTest(): void {
+    #[Test]
+    public function teacherAccountCanBeCreated(): void {
         self::$endpoint = 'ucitel';
         $body = [
             "jmeno"     => "testCreate",
@@ -67,11 +70,10 @@ class AdminTest extends TestCase {
 
         self::$ucitelId = $response['body']['id'];
     }
-    /**
-     * @depends createUcitelTest
-     * @test
-     */
-    public function deleteUcitelTest(): void {
+
+    #[Test]
+    #[Depends('teacherAccountCanBeCreated')]
+    public function teacherAccountCanBeDeleted(): void {
         $response = SendRequestAction::send(
             'DELETE',
             $this->getEndpointUrl(self::$ucitelId)

@@ -15,9 +15,16 @@ final class Config {
     * @var array<string, class-string>
     */
     public static array $middlewareLookup = [
+        //user can only work with its own model.
         'selfCheck'  => StudentMiddleware::class,
+        
+        //auth checkout.
         'auth'       => AuthMiddleware::class,
+        
+        //requests can be send only locally.
         'private'    => CorseMiddleware::class,
+
+        //routes can accessed only be specified account type.
         'onlyAdmin'  => AdminMiddleware::class,
         'onlyTeacher'=> TeacherMiddleware::class
     ];

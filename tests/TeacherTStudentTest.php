@@ -1,15 +1,17 @@
 <?php 
 namespace tests;
 use PHPUnit\Framework\TestCase;
-use src\factories\ZnamkaModelFactory;
-use src\models\ZnamkaModel;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\Depends;
+use tests\helpers\HelperTrait;
+use tests\helpers\SendRequestAction;
 
-class UcitelTStudentTest extends TestCase {
+class TeacherTStudentTest extends TestCase {
     use HelperTrait;
     private static int $znamkaId;
 
-    /** @test */
-    public function createGradeTest(): void {
+    #[Test]
+    public function gradeCanBeCreated(): void {
         self::$endpoint = 'znamka';
         $body = [
             "poznamka"    => "testCreate",
@@ -30,11 +32,9 @@ class UcitelTStudentTest extends TestCase {
         self::$znamkaId = $response['body']['id'];
     }
 
-    /**
-     * @depends createGradeTest
-     * @test
-     */
-    public function patchGradeTest(): void {
+    #[Test]
+    #[Depends('gradeCanBeCreated')]
+    public function gradeCanBeEdited(): void {
         $body = [ "znamka" => 5 ];
         $response = SendRequestAction::send(
             'PATCH', 
@@ -53,11 +53,10 @@ class UcitelTStudentTest extends TestCase {
         $this->assertNotFalse($response);
         $this->assertEquals($response['body']['znamka'], 5);
     }
-    /**
-     * @depends patchGradeTest
-     * @test
-     */
-    public function deleteGradeTest(): void {
+
+    #[Test]
+    #[Depends('gradeCanBeCreated')]
+    public function gradeCanBeDeleted(): void {
         $response = SendRequestAction::send(
             'DELETE', 
             $this->getEndpointUrl(self::$znamkaId)
