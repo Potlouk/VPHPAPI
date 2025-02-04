@@ -8,7 +8,7 @@ use tests\helpers\SendRequestAction;
 
 class StudentTStudentTest extends TestCase {
     use HelperTrait;
-    private $studentId = 9;
+    private $studentId = 11;
     
     #[Test]
     public function studentDataCanBeLoaded(): void {

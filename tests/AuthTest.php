@@ -32,7 +32,7 @@ class AuthTest extends TestCase {
     #[Depends('userCanBeRegistered')]
     public function userCanLogin(): void {
         $body = [
-            "heslo" => "heslo",
+            "heslo" => "root",
             "jmeno" => "admin",
         ];
 

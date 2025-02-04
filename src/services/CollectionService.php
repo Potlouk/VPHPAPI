@@ -19,7 +19,10 @@ class CollectionService implements CollectionInterface{
         );
 
         if (!$model)
-        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this->model) ], 404);
+        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ 
+            basename(str_replace('\\', '/', get_class($this->model)))
+         ], 404);
+
 
         $model = $this->factory::build($model);
         $model->getRelations();
@@ -65,7 +68,10 @@ class CollectionService implements CollectionInterface{
         );
 
         if (empty($currentData))
-        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ get_class($this->model) ], 404);
+        ApiException::throw(ErrorTypes::MODEL_NOT_FOUND,[ 
+            basename(str_replace('\\', '/', get_class($this->model)))
+         ], 404);
+
 
         $model = $this->factory::build($currentData);
         $model->delete();  
@@ -83,5 +89,5 @@ class CollectionService implements CollectionInterface{
 
         return $result;
     }
-   
+
 }

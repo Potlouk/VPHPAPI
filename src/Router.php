@@ -80,8 +80,13 @@ final class Router {
             $matched = false;
             foreach(explode('/', $path) as $part){
                 if (empty($part)) continue;
-                
                 if (!str_contains($requestPath, $part)){
+                    $matched = false;
+                    break;
+                }
+
+                if (!array_search($part,explode('/', $requestPath)))
+                {
                     $matched = false;
                     break;
                 }

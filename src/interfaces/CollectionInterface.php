@@ -30,5 +30,10 @@ interface CollectionInterface{
     * @param array<string, mixed> $data
     */
     public function patch(array $data): void;
+    /**
+    * @param array<string, mixed> $data
+    * @return array<string, mixed> $data
+    */
+    //public function all(array $data): array;
     
 }

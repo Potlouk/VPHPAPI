@@ -24,27 +24,27 @@ class Controller implements ControllerInterface{
     }
 
     public function get(ApiRequest $request): void{
-        $request = $this->requestValidator->validate($request);
-        $result = $this->modelService->get($request);
+        $vRequest = $this->requestValidator->validate($request);
+        $result = $this->modelService->get($vRequest);
         $result = $this->modelDTO->transform($result);
         $this->response($result);
      }
  
      public function create(ApiRequest $request): void{
-       $request = $this->requestValidator->validate($request);
-       $modelId = $this->modelService->create($request);
+       $vRequest = $this->requestValidator->validate($request);
+       $modelId = $this->modelService->create($vRequest);
        $this->response($modelId);
      }
  
      public function patch(ApiRequest $request): void{
-       $request = $this->requestValidator->validate($request);
-       $this->modelService->patch($request);
+       $vRequest = $this->requestValidator->validate($request);
+       $this->modelService->patch($vRequest);
        $this->response();
      }
  
      public function delete(ApiRequest $request): void{
-       $request = $this->requestValidator->validate($request);
-       $this->modelService->delete($request);
+       $vRequest = $this->requestValidator->validate($request);
+       $this->modelService->delete($vRequest);
        $this->response();
      }
  

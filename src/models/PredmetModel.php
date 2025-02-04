@@ -10,8 +10,6 @@ final class PredmetModel extends Model{
     
     public array $assignables = [
         'nazev' => 'string',
-        'poznamka' => 'string',
-        'zapsano' => 'string',
     ];
 
 }

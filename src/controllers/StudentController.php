@@ -2,6 +2,7 @@
 namespace src\controllers;
 
 use src\DTO\StudentDTO;
+use src\requests\ApiRequest;
 use src\services\StudentService;
 use src\validators\studentRequestValidator;
 use Swoole\Http\Response;
@@ -15,5 +16,9 @@ final class StudentController extends Controller{
         ) {
        parent::__construct($student,$studentDTO,$requestValidator,$response);
     }
- 
+
+    public function allFromTeacherClass(ApiRequest $request): void{
+        $result = $this->student->allFromTeacherClass($request->auth->Ucitele_Id);
+        $this->response($result);
+    }
 }

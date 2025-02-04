@@ -123,6 +123,15 @@ class Model implements ModelInterface{
         $this->bindAndExecute(["{$this->primaryKey}" => $this->id],[ "{$this->primaryKey}" => 'integer']);
     }
 
+    /**
+     * ALL query results
+     * @param array<mixed,mixed> $options Number of items per page
+     * @return array<string, mixed>
+     */
+    public function all(array $options): array {
+        $this->query = "SELECT * FROM {$this->table} WHERE {$options[0]}={$options[1]} ORDER BY {$this->primaryKey}";
+        return $this->bindAndExecute([],[])->fetchAll(PDO::FETCH_ASSOC);
+    }
 
      /**
      * Paginates query results

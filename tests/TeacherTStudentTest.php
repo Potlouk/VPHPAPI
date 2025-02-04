@@ -17,7 +17,7 @@ class TeacherTStudentTest extends TestCase {
             "poznamka"    => "testCreate",
             "zapsano"     => "1111-11-11",
             "znamka"      => 1,
-            "Studenti_Id" => 9,
+            "Studenti_Id" => 1,
             "Predmety_Id" => 1
         ];
 
